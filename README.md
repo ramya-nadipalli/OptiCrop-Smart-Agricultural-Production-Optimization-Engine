@@ -32,7 +32,7 @@ The model is trained using agricultural data containing soil and environmental p
 
 ## Project Demo
 Demo Video:
-https://drive.google.com/file/d/1LWa6lXXSPepnXv-qaxwMIXquO-3WvHmx/view?usp=sharing
+https://drive.google.com/file/d/1riqeeNQowd4-YmW2Cqg8P3yzEZXwgfD6/view?usp=sharing
 ## Installation
 
 ```bash
