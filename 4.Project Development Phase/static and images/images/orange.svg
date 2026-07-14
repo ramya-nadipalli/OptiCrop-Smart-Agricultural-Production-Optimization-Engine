@@ -1,0 +1,12 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="200" fill="#fff8dc"/>
+  <circle cx="100" cy="90" r="38" fill="#ff8c00"/>
+  <circle cx="100" cy="90" r="35" fill="#ffa500"/>
+  <circle cx="85" cy="75" r="6" fill="#ff9912"/>
+  <circle cx="100" cy="70" r="6" fill="#ff9912"/>
+  <circle cx="115" cy="75" r="6" fill="#ff9912"/>
+  <circle cx="90" cy="95" r="6" fill="#ff9912"/>
+  <circle cx="110" cy="95" r="6" fill="#ff9912"/>
+  <line x1="100" y1="35" x2="100" y2="50" stroke="#228b22" stroke-width="2"/>
+  <text x="100" y="170" text-anchor="middle" font-size="18" fill="#cc6600" font-weight="bold">Orange</text>
+</svg>

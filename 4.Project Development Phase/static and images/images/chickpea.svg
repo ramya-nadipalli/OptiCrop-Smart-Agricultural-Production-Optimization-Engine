@@ -1,0 +1,9 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="200" fill="#e6f3ff"/>
+  <circle cx="70" cy="70" r="25" fill="#d2691e"/>
+  <circle cx="130" cy="70" r="25" fill="#d2691e"/>
+  <circle cx="100" cy="110" r="25" fill="#d2691e"/>
+  <circle cx="85" cy="140" r="20" fill="#d2691e"/>
+  <circle cx="115" cy="140" r="20" fill="#d2691e"/>
+  <text x="100" y="170" text-anchor="middle" font-size="16" fill="#8b4513" font-weight="bold">Chickpea</text>
+</svg>

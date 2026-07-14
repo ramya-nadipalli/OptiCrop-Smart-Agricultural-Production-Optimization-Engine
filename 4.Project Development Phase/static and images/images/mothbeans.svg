@@ -1,0 +1,10 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="200" fill="#f5deb3"/>
+  <circle cx="60" cy="80" r="16" fill="#cd853f"/>
+  <circle cx="100" cy="70" r="16" fill="#cd853f"/>
+  <circle cx="140" cy="80" r="16" fill="#cd853f"/>
+  <circle cx="80" cy="120" r="16" fill="#cd853f"/>
+  <circle cx="120" cy="120" r="16" fill="#cd853f"/>
+  <circle cx="100" cy="145" r="16" fill="#cd853f"/>
+  <text x="100" y="170" text-anchor="middle" font-size="16" fill="#8b6914" font-weight="bold">Moth Beans</text>
+</svg>

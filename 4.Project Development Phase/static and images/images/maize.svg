@@ -1,0 +1,11 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="200" fill="#ffe4b5"/>
+  <rect x="90" y="40" width="20" height="80" fill="#228b22"/>
+  <circle cx="100" cy="60" r="15" fill="#ffd700"/>
+  <circle cx="100" cy="80" r="15" fill="#ffd700"/>
+  <circle cx="100" cy="100" r="15" fill="#ffd700"/>
+  <circle cx="100" cy="120" r="15" fill="#ffd700"/>
+  <path d="M 80 50 Q 60 70 70 100" stroke="#228b22" stroke-width="3" fill="none"/>
+  <path d="M 120 50 Q 140 70 130 100" stroke="#228b22" stroke-width="3" fill="none"/>
+  <text x="100" y="170" text-anchor="middle" font-size="18" fill="#2d5016" font-weight="bold">Maize</text>
+</svg>

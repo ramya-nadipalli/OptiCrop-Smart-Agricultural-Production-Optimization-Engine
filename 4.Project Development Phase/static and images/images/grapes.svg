@@ -1,0 +1,14 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="200" fill="#f0e6ff"/>
+  <line x1="100" y1="40" x2="100" y2="120" stroke="#8b4513" stroke-width="3"/>
+  <circle cx="85" cy="60" r="12" fill="#800080"/>
+  <circle cx="100" cy="50" r="12" fill="#800080"/>
+  <circle cx="115" cy="60" r="12" fill="#800080"/>
+  <circle cx="75" cy="80" r="12" fill="#800080"/>
+  <circle cx="100" cy="75" r="12" fill="#800080"/>
+  <circle cx="125" cy="80" r="12" fill="#800080"/>
+  <circle cx="85" cy="100" r="12" fill="#800080"/>
+  <circle cx="115" cy="100" r="12" fill="#800080"/>
+  <circle cx="100" cy="110" r="12" fill="#800080"/>
+  <text x="100" y="170" text-anchor="middle" font-size="18" fill="#660066" font-weight="bold">Grapes</text>
+</svg>

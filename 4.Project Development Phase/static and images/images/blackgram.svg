@@ -1,0 +1,10 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="200" fill="#f0f0f0"/>
+  <circle cx="65" cy="75" r="17" fill="#1a1a1a"/>
+  <circle cx="105" cy="65" r="17" fill="#1a1a1a"/>
+  <circle cx="145" cy="75" r="17" fill="#1a1a1a"/>
+  <circle cx="85" cy="115" r="17" fill="#1a1a1a"/>
+  <circle cx="125" cy="115" r="17" fill="#1a1a1a"/>
+  <circle cx="105" cy="145" r="17" fill="#1a1a1a"/>
+  <text x="100" y="170" text-anchor="middle" font-size="16" fill="#333" font-weight="bold">Black Gram</text>
+</svg>

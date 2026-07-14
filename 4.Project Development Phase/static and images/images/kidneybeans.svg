@@ -1,0 +1,9 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="200" fill="#fff0f5"/>
+  <ellipse cx="60" cy="80" rx="20" ry="30" fill="#8b0000"/>
+  <ellipse cx="100" cy="70" rx="20" ry="30" fill="#8b0000"/>
+  <ellipse cx="140" cy="80" rx="20" ry="30" fill="#8b0000"/>
+  <ellipse cx="80" cy="120" rx="20" ry="30" fill="#8b0000"/>
+  <ellipse cx="120" cy="120" rx="20" ry="30" fill="#8b0000"/>
+  <text x="100" y="170" text-anchor="middle" font-size="16" fill="#5d0000" font-weight="bold">Kidney Beans</text>
+</svg>

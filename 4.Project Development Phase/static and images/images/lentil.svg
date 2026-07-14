@@ -1,0 +1,10 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="200" fill="#ffe4e1"/>
+  <circle cx="70" cy="75" r="16" fill="#a0522d"/>
+  <circle cx="110" cy="65" r="16" fill="#a0522d"/>
+  <circle cx="150" cy="75" r="16" fill="#a0522d"/>
+  <circle cx="85" cy="120" r="16" fill="#a0522d"/>
+  <circle cx="125" cy="120" r="16" fill="#a0522d"/>
+  <circle cx="105" cy="150" r="16" fill="#a0522d"/>
+  <text x="100" y="170" text-anchor="middle" font-size="18" fill="#6b3410" font-weight="bold">Lentil</text>
+</svg>

@@ -1,0 +1,10 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="200" fill="#f0e68c"/>
+  <ellipse cx="100" cy="80" rx="8" ry="35" fill="#8b7500" opacity="0.7"/>
+  <ellipse cx="85" cy="75" rx="6" ry="40" fill="#8b7500" opacity="0.6"/>
+  <ellipse cx="115" cy="78" rx="6" ry="38" fill="#8b7500" opacity="0.6"/>
+  <circle cx="100" cy="100" r="25" fill="#90ee90"/>
+  <circle cx="75" cy="110" r="20" fill="#90ee90"/>
+  <circle cx="125" cy="110" r="20" fill="#90ee90"/>
+  <text x="100" y="170" text-anchor="middle" font-size="18" fill="#2d5016" font-weight="bold">Rice</text>
+</svg>

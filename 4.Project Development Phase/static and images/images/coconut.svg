@@ -1,0 +1,11 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="200" fill="#e0ffff"/>
+  <circle cx="100" cy="80" r="32" fill="#8b4513"/>
+  <circle cx="100" cy="80" r="28" fill="#a0522d"/>
+  <path d="M 100 50 L 85 40 L 90 50 L 75 35 L 85 45 L 80 55" fill="#228b22"/>
+  <path d="M 100 50 L 115 40 L 110 50 L 125 35 L 115 45 L 120 55" fill="#228b22"/>
+  <circle cx="85" cy="80" r="4" fill="#333"/>
+  <circle cx="115" cy="80" r="4" fill="#333"/>
+  <line x1="100" y1="112" x2="100" y2="140" stroke="#8b4513" stroke-width="4"/>
+  <text x="100" y="170" text-anchor="middle" font-size="16" fill="#6b4423" font-weight="bold">Coconut</text>
+</svg>

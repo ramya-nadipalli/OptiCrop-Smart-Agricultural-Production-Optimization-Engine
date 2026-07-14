@@ -1,0 +1,12 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="200" fill="#fff5ee"/>
+  <ellipse cx="100" cy="90" rx="28" ry="38" fill="#ffa07a"/>
+  <ellipse cx="100" cy="90" rx="24" ry="34" fill="#ff7f50"/>
+  <circle cx="85" cy="85" r="5" fill="#333"/>
+  <circle cx="100" cy="75" r="5" fill="#333"/>
+  <circle cx="115" cy="85" r="5" fill="#333"/>
+  <circle cx="90" cy="105" r="5" fill="#333"/>
+  <circle cx="110" cy="105" r="5" fill="#333"/>
+  <line x1="100" y1="35" x2="100" y2="50" stroke="#228b22" stroke-width="3"/>
+  <text x="100" y="170" text-anchor="middle" font-size="18" fill="#d2691e" font-weight="bold">Papaya</text>
+</svg>

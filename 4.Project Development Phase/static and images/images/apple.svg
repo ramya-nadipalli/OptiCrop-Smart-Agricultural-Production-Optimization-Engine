@@ -1,0 +1,9 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="200" fill="#f0f8ff"/>
+  <circle cx="100" cy="90" r="35" fill="#dc143c"/>
+  <circle cx="85" cy="75" r="20" fill="#ff6b6b"/>
+  <circle cx="115" cy="75" r="20" fill="#ff6b6b"/>
+  <rect x="97" y="35" width="6" height="25" fill="#8b4513"/>
+  <ellipse cx="115" cy="50" rx="10" ry="8" fill="#228b22"/>
+  <text x="100" y="170" text-anchor="middle" font-size="18" fill="#8b0000" font-weight="bold">Apple</text>
+</svg>

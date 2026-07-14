@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Smart Agricultural Crop Recommendation</title>
+  <style>
+    :root {
+      --bg: #f4f8f5;
+      --panel: #ffffff;
+      --accent: #2d7d31;
+      --accent-soft: #d8eddb;
+      --text: #21312b;
+      --muted: #5c6d64;
+      --radius: 22px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, sans-serif;
+      background: linear-gradient(180deg, #eef7ee 0%, #f7fbf8 100%);
+      color: var(--text);
+    }
+    .page {
+      width: min(1200px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 2rem 0 4rem;
+    }
+    .hero {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+    .hero__content {
+      padding: 2rem;
+      border-radius: var(--radius);
+      background: white;
+      box-shadow: 0 30px 60px rgba(39, 76, 36, 0.08);
+    }
+    .hero h1 {
+      margin: 0 0 0.75rem;
+      font-size: clamp(2.4rem, 4vw, 3.4rem);
+      line-height: 1.05;
+    }
+    .hero p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 560px;
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+    .hero__visual {
+      min-height: 340px;
+      border-radius: var(--radius);
+      background: linear-gradient(150deg, rgba(45,125,49,0.08), rgba(197,236,195,0.4));
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+    .hero__visual::before {
+      content: 'Smart Farm Dashboard';
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      color: rgba(34, 50, 42, 0.18);
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+    .hero__visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.95);
+    }
+    .grid {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: minmax(280px, 360px) 1fr;
+    }
+    .panel {
+      background: var(--panel);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      box-shadow: 0 22px 45px rgba(44, 68, 51, 0.08);
+    }
+    .panel h2 {
+      margin: 0 0 1rem;
+      font-size: 1.35rem;
+    }
+    .field {
+      display: grid;
+      gap: 0.45rem;
+      margin-bottom: 1rem;
+    }
+    .field label {
+      font-size: 0.95rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .field label svg {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+    .field input {
+      width: 100%;
+      border: 2px solid #d8e3da;
+      border-radius: 14px;
+      padding: 0.95rem 1rem;
+      font-size: 0.98rem;
+      color: var(--text);
+      outline: none;
+      transition: all 0.2s ease;
+      background: #fbfdf9;
+    }
+    .field input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px rgba(45,125,49,0.12);
+      background: #fefffe;
+    }
+    .resource-dashboard {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.8rem;
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      background: linear-gradient(135deg, #f0f8f2 0%, #e8f5eb 100%);
+      border-radius: 16px;
+      border: 1px solid #d8eddb;
+    }
+    .resource-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem;
+      background: white;
+      border-radius: 12px;
+      border-left: 4px solid var(--accent);
+    }
+    .resource-icon {
+      width: 32px;
+      height: 32px;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+    .resource-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+    .resource-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .resource-value {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .actions {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+    .button {
+      border: none;
+      border-radius: 14px;
+      padding: 0.95rem 1.4rem;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .button.primary {
+      background: var(--accent);
+      color: white;
+      box-shadow: 0 16px 30px rgba(45,125,49,0.24);
+    }
+    .button.primary:hover {
+      transform: translateY(-1px);
+    }
+    .button.secondary {
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+    .result-card {
+      border-radius: 24px;
+      overflow: hidden;
+      background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(243,251,243,0.95));
+      border: 1px solid rgba(45,125,49,0.12);
+    }
+    .result-card img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+    }
+    .result-details {
+      padding: 1.5rem;
+    }
+    .result-details h3 {
+      margin: 0 0 0.5rem;
+      font-size: 1.5rem;
+    }
+    .result-details p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+    .stats {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: 1.4rem;
+    }
+    .stat {
+      padding: 1rem 1.1rem;
+      border-radius: 18px;
+      background: #eef8ef;
+      color: #2e5930;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+    .footer-note {
+      margin-top: 1.5rem;
+      font-size: 0.96rem;
+      color: var(--muted);
+    }
+    @media (max-width: 860px) {
+      .hero, .grid { grid-template-columns: 1fr; }
+      .hero__visual { min-height: 260px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <div class="hero__content">
+        <p style="font-size:0.95rem;color:#4b6a58;margin-bottom:0.75rem;font-weight:700;letter-spacing:0.08em;">SMART AGRICULTURE</p>
+        <h1>Realistic crop analytics with beautiful recommendations.</h1>
+        <p>Enter your soil and weather data to receive a modern crop recommendation dashboard. Each prediction includes a crop image, summary, and guidance for farming success.</p>
+      </div>
+      <div class="hero__visual">
+        <img src="https://source.unsplash.com/featured/1200x800/?agriculture,field" alt="Agriculture Dashboard">
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="panel">
+        <h2>📊 Farm Resources & Parameters</h2>
+        
+        <!-- Resource Dashboard Display -->
+        <div class="resource-dashboard" id="resource-dashboard">
+          <div class="resource-item">
+            <div class="resource-icon">🌱</div>
+            <div class="resource-info">
+              <div class="resource-label">Nitrogen (N)</div>
+              <div class="resource-value"><span id="display-nitrogen">90</span></div>
+            </div>
+          </div>
+          <div class="resource-item">
+            <div class="resource-icon">🌿</div>
+            <div class="resource-info">
+              <div class="resource-label">Phosphorus (P)</div>
+              <div class="resource-value"><span id="display-phosphorus">42</span></div>
+            </div>
+          </div>
+          <div class="resource-item">
+            <div class="resource-icon">✨</div>
+            <div class="resource-info">
+              <div class="resource-label">Potassium (K)</div>
+              <div class="resource-value"><span id="display-potassium">43</span></div>
+            </div>
+          </div>
+          <div class="resource-item">
+            <div class="resource-icon">🌡️</div>
+            <div class="resource-info">
+              <div class="resource-label">Temperature</div>
+              <div class="resource-value"><span id="display-temperature">20.9</span>°C</div>
+            </div>
+          </div>
+          <div class="resource-item">
+            <div class="resource-icon">💧</div>
+            <div class="resource-info">
+              <div class="resource-label">Humidity</div>
+              <div class="resource-value"><span id="display-humidity">82</span>%</div>
+            </div>
+          </div>
+          <div class="resource-item">
+            <div class="resource-icon">⚗️</div>
+            <div class="resource-info">
+              <div class="resource-label">Soil pH</div>
+              <div class="resource-value"><span id="display-ph">6.5</span></div>
+            </div>
+          </div>
+          <div class="resource-item">
+            <div class="resource-icon">🌧️</div>
+            <div class="resource-info">
+              <div class="resource-label">Rainfall</div>
+              <div class="resource-value"><span id="display-rainfall">202.9</span> mm</div>
+            </div>
+          </div>
+          <div class="resource-item">
+            <div class="resource-icon">🌾</div>
+            <div class="resource-info">
+              <div class="resource-label">Soil Type</div>
+              <div class="resource-value">Fertile</div>
+            </div>
+          </div>
+        </div>
+
+        <form id="crop-form">
+          <div class="field">
+            <label for="nitrogen">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/><path d="M12 7v10M7 12h10"/>
+              </svg>
+              Nitrogen (N)
+            </label>
+            <input id="nitrogen" name="nitrogen" type="number" value="90" required>
+          </div>
+          <div class="field">
+            <label for="phosphorus">
+              <svg viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                <circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4" fill="white"/>
+              </svg>
+              Phosphorus (P)
+            </label>
+            <input id="phosphorus" name="phosphorus" type="number" value="42" required>
+          </div>
+          <div class="field">
+            <label for="potassium">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2l3 7h7l-6 5 2 7-6-5-6 5 2-7-6-5h7z"/>
+              </svg>
+              Potassium (K)
+            </label>
+            <input id="potassium" name="potassium" type="number" value="43" required>
+          </div>
+          <div class="field">
+            <label for="temperature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2v20M7 4h10v12a5 5 0 1 1-10 0V4z"/>
+              </svg>
+              Temperature (°C)
+            </label>
+            <input id="temperature" name="temperature" type="number" step="0.1" value="20.9" required>
+          </div>
+          <div class="field">
+            <label for="humidity">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5z"/>
+              </svg>
+              Humidity (%)
+            </label>
+            <input id="humidity" name="humidity" type="number" step="0.1" value="82" required>
+          </div>
+          <div class="field">
+            <label for="ph">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2c5.5 0 10 4.5 10 10s-4.5 10-10 10S2 17.5 2 12 6.5 2 12 2z"/>
+              </svg>
+              Soil pH
+            </label>
+            <input id="ph" name="ph" type="number" step="0.1" value="6.5" required>
+          </div>
+          <div class="field">
+            <label for="rainfall">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2v13M7 17h10v3a2 2 0 0 1-2 2h-6a2 2 0 0 1-2-2v-3z"/><circle cx="12" cy="8" r="3"/>
+              </svg>
+              Rainfall (mm)
+            </label>
+            <input id="rainfall" name="rainfall" type="number" step="0.1" value="202.9" required>
+          </div>
+          <div class="actions">
+            <button type="submit" class="button primary">🔍 Predict Crop</button>
+            <button type="button" class="button secondary" id="clear-btn">🔄 Clear</button>
+          </div>
+        </form>
+        <p class="footer-note">💡 The recommendation is based on your input values and the model prediction. Adjust values to explore different crop options.</p>
+      </article>
+
+      <article class="panel result-card" id="result-card">
+        <img id="crop-image" src="/static/images/default.svg" alt="Crop recommendation image">
+        <div class="result-details">
+          <h3 id="crop-title">Your crop recommendation will appear here</h3>
+          <p id="crop-description">Fill in the soil and weather details, then click Predict Crop to see a result with an image and description.</p>
+          <div class="stats">
+            <div class="stat"><strong>Crop:</strong> <span id="crop-name">—</span></div>
+            <div class="stat"><strong>Status:</strong> <span id="crop-status">Ready to predict</span></div>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    const form = document.getElementById('crop-form');
+    const resultCard = document.getElementById('result-card');
+    const cropImage = document.getElementById('crop-image');
+    const cropTitle = document.getElementById('crop-title');
+    const cropDescription = document.getElementById('crop-description');
+    const cropName = document.getElementById('crop-name');
+    const cropStatus = document.getElementById('crop-status');
+    const clearBtn = document.getElementById('clear-btn');
+
+    // Resource display elements
+    const displayNitrogen = document.getElementById('display-nitrogen');
+    const displayPhosphorus = document.getElementById('display-phosphorus');
+    const displayPotassium = document.getElementById('display-potassium');
+    const displayTemperature = document.getElementById('display-temperature');
+    const displayHumidity = document.getElementById('display-humidity');
+    const displayPh = document.getElementById('display-ph');
+    const displayRainfall = document.getElementById('display-rainfall');
+
+    // Update resource dashboard when inputs change
+    document.getElementById('nitrogen').addEventListener('change', (e) => {
+      displayNitrogen.textContent = e.target.value;
+    });
+    document.getElementById('phosphorus').addEventListener('change', (e) => {
+      displayPhosphorus.textContent = e.target.value;
+    });
+    document.getElementById('potassium').addEventListener('change', (e) => {
+      displayPotassium.textContent = e.target.value;
+    });
+    document.getElementById('temperature').addEventListener('change', (e) => {
+      displayTemperature.textContent = e.target.value;
+    });
+    document.getElementById('humidity').addEventListener('change', (e) => {
+      displayHumidity.textContent = e.target.value;
+    });
+    document.getElementById('ph').addEventListener('change', (e) => {
+      displayPh.textContent = e.target.value;
+    });
+    document.getElementById('rainfall').addEventListener('change', (e) => {
+      displayRainfall.textContent = e.target.value;
+    });
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      cropStatus.textContent = 'Predicting...';
+      const formData = new FormData(form);
+      const payload = Object.fromEntries(formData.entries());
+
+      try {
+        const response = await fetch('/predict', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify(payload)
+        });
+        const data = await response.json();
+
+        if (data.error) {
+          cropTitle.textContent = 'Prediction error';
+          cropDescription.textContent = data.error;
+          cropName.textContent = 'N/A';
+          cropStatus.textContent = 'Try again';
+          cropImage.src = '/static/images/default.svg';
+          return;
+        }
+
+        cropTitle.textContent = `${data.label} is recommended for your field`;
+        cropDescription.textContent = data.description;
+        cropImage.src = data.image;
+        cropName.textContent = data.label;
+        cropStatus.textContent = 'Recommendation ready';
+      } catch (err) {
+        cropTitle.textContent = 'Unable to predict';
+        cropDescription.textContent = 'Please check your input values or your network connection.';
+        cropName.textContent = 'N/A';
+        cropStatus.textContent = 'Error';
+      }
+    });
+
+    clearBtn.addEventListener('click', () => {
+      form.reset();
+      cropTitle.textContent = 'Your crop recommendation will appear here';
+      cropDescription.textContent = 'Fill in the soil and weather details, then click Predict Crop to see a result with an image and description.';
+      cropName.textContent = '—';
+      cropStatus.textContent = 'Ready to predict';
+      cropImage.src = '/static/images/default.svg';
+      
+      // Reset resource display
+      displayNitrogen.textContent = '90';
+      displayPhosphorus.textContent = '42';
+      displayPotassium.textContent = '43';
+      displayTemperature.textContent = '20.9';
+      displayHumidity.textContent = '82';
+      displayPh.textContent = '6.5';
+      displayRainfall.textContent = '202.9';
+    });
+  </script>
+</body>
+</html>

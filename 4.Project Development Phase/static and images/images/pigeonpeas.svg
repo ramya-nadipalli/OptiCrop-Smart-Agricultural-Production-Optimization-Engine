@@ -1,0 +1,11 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="200" fill="#ffeaa7"/>
+  <circle cx="70" cy="60" r="18" fill="#b8860b"/>
+  <circle cx="110" cy="50" r="18" fill="#b8860b"/>
+  <circle cx="150" cy="60" r="18" fill="#b8860b"/>
+  <circle cx="85" cy="110" r="18" fill="#b8860b"/>
+  <circle cx="125" cy="110" r="18" fill="#b8860b"/>
+  <line x1="75" y1="65" x2="85" y2="105" stroke="#666" stroke-width="2"/>
+  <line x1="115" y1="55" x2="120" y2="105" stroke="#666" stroke-width="2"/>
+  <text x="100" y="170" text-anchor="middle" font-size="14" fill="#6b5b00" font-weight="bold">Pigeon Peas</text>
+</svg>

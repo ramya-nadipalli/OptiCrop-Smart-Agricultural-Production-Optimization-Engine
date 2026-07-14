@@ -1,0 +1,9 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="200" fill="#f5f5dc"/>
+  <circle cx="100" cy="90" r="38" fill="#ff9933"/>
+  <circle cx="100" cy="90" r="35" fill="#ffb366"/>
+  <path d="M 80 70 Q 100 60 120 70 Q 100 90 80 110 Q 100 100 120 110" stroke="#666" stroke-width="1.5" fill="none" opacity="0.5"/>
+  <circle cx="100" cy="90" r="3" fill="#333"/>
+  <path d="M 95 50 L 105 50 L 108 60 L 92 60 Z" fill="#228b22"/>
+  <text x="100" y="170" text-anchor="middle" font-size="16" fill="#cc7722" font-weight="bold">Muskmelon</text>
+</svg>

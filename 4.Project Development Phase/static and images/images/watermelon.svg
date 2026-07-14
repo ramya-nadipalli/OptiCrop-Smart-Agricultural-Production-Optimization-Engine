@@ -1,0 +1,11 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="200" fill="#e6ffe6"/>
+  <circle cx="100" cy="90" r="38" fill="#ff1493"/>
+  <circle cx="100" cy="90" r="33" fill="#ff69b4"/>
+  <circle cx="85" cy="80" r="5" fill="#2f4f4f"/>
+  <circle cx="100" cy="95" r="5" fill="#2f4f4f"/>
+  <circle cx="115" cy="85" r="5" fill="#2f4f4f"/>
+  <circle cx="90" cy="110" r="5" fill="#2f4f4f"/>
+  <path d="M 95 50 L 105 50 L 108 60 L 92 60 Z" fill="#228b22"/>
+  <text x="100" y="170" text-anchor="middle" font-size="16" fill="#c71585" font-weight="bold">Watermelon</text>
+</svg>

@@ -1,0 +1,10 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="200" fill="#ffe4b5"/>
+  <ellipse cx="100" cy="85" rx="35" ry="40" fill="#ff8c00"/>
+  <ellipse cx="85" cy="80" rx="15" ry="20" fill="#ffa500"/>
+  <ellipse cx="115" cy="80" rx="15" ry="20" fill="#ffa500"/>
+  <line x1="100" y1="125" x2="100" y2="145" stroke="#8b4513" stroke-width="3"/>
+  <ellipse cx="90" cy="135" rx="8" ry="12" fill="#228b22"/>
+  <ellipse cx="110" cy="135" rx="8" ry="12" fill="#228b22"/>
+  <text x="100" y="170" text-anchor="middle" font-size="18" fill="#cc6600" font-weight="bold">Mango</text>
+</svg>

@@ -1,0 +1,9 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="200" fill="#fff8dc"/>
+  <circle cx="100" cy="90" r="40" fill="#dc143c"/>
+  <circle cx="75" cy="120" r="12" fill="#8b0000"/>
+  <circle cx="95" cy="130" r="12" fill="#8b0000"/>
+  <circle cx="125" cy="130" r="12" fill="#8b0000"/>
+  <circle cx="100" cy="60" r="8" fill="#228b22"/>
+  <text x="100" y="170" text-anchor="middle" font-size="16" fill="#8b3a00" font-weight="bold">Pomegranate</text>
+</svg>

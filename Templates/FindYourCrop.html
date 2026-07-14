@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Find Your Crop - OptiCrop</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='FindYourCrop.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <!-- NAVIGATION BAR -->
+  <nav class="navbar">
+    <div class="logo">
+      <i class="fas fa-seedling"></i> OptiCrop
+    </div>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/FindYourCrop" class="active">Find Your Crop</a></li>
+    </ul>
+  </nav>
+
+  <div class="overlay">
+    <div class="content">
+      <div class="form-container">
+        <h2>Find Your Perfect Crop</h2>
+        <p class="subtitle">Enter your soil and environmental conditions to get AI-powered crop recommendations</p>
+
+        <form method="POST" action="{{ url_for('FindYourCrop') }}" class="prediction-form">
+          <div class="input-group">
+            <div class="input-field">
+              <i class="fas fa-flask"></i>
+              <input type="text" name="N" placeholder="Nitrogen (N)" required>
+              <div class="input-tooltip">Essential nutrient for plant growth</div>
+            </div>
+            <div class="input-field">
+              <i class="fas fa-atom"></i>
+              <input type="text" name="P" placeholder="Phosphorus (P)" required>
+              <div class="input-tooltip">Vital for root development</div>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <div class="input-field">
+              <i class="fas fa-bolt"></i>
+              <input type="text" name="K" placeholder="Potassium (K)" required>
+              <div class="input-tooltip">Important for water regulation</div>
+            </div>
+            <div class="input-field">
+              <i class="fas fa-thermometer-half"></i>
+              <input type="text" name="temperature" placeholder="Temperature (°C)" required>
+              <div class="input-tooltip">Soil temperature for optimal growth</div>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <div class="input-field">
+              <i class="fas fa-tint"></i>
+              <input type="text" name="humidity" placeholder="Humidity (%)" required>
+              <div class="input-tooltip">Relative humidity level</div>
+            </div>
+            <div class="input-field">
+              <i class="fas fa-vial"></i>
+              <input type="text" name="ph" placeholder="pH Level" required>
+              <div class="input-tooltip">Soil acidity/alkalinity (0-14)</div>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <div class="input-field full-width">
+              <i class="fas fa-cloud-rain"></i>
+              <input type="text" name="rainfall" placeholder="Rainfall (mm)" required>
+              <div class="input-tooltip">Annual rainfall in millimeters</div>
+            </div>
+          </div>
+
+          <button type="submit" class="predict-button">
+            <span class="button-text">Predict Crop</span>
+            <i class="fas fa-magic"></i>
+          </button>
+        </form>
+
+        {% if prediction %}
+        <div class="prediction-result">
+          <div class="result-icon">
+            <i class="fas fa-seedling"></i>
+          </div>
+          <div class="result-content">
+            <h3>Recommended Crop</h3>
+            <p class="crop-name">{{ prediction }}</p>
+            <div class="crop-details">
+              <div class="detail-item">
+                <i class="fas fa-sun"></i>
+                <span>Optimal Growing Conditions</span>
+              </div>
+              <div class="detail-item">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Growing Season</span>
+              </div>
+              <div class="detail-item">
+                <i class="fas fa-chart-line"></i>
+                <span>Expected Yield</span>
+              </div>
+              <div class="detail-item">
+                <i class="fas fa-leaf"></i>
+                <span>Key Benefits</span>
+              </div>
+            </div>
+            <div class="crop-info">
+              <p>Based on your soil and environmental conditions, {{ prediction }} is the optimal crop choice. This recommendation is powered by our advanced machine learning model that analyzes multiple factors to ensure the best possible yield.</p>
+              <div class="crop-stats">
+                <div class="stat">
+                  <span class="stat-value">95%</span>
+                  <span class="stat-label">Match Score</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-value">High</span>
+                  <span class="stat-label">Yield Potential</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-value">Moderate</span>
+                  <span class="stat-label">Maintenance</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Connect With Us</h4>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <p>© 2025 OptiCrop. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- SCROLL TO TOP BUTTON -->
+  <button onclick="topFunction()" id="scrollBtn" title="Go to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script>
+    // Scroll to top functionality
+    const scrollBtn = document.getElementById("scrollBtn");
+    window.onscroll = () => {
+      scrollBtn.style.display = window.scrollY > 200 ? "block" : "none";
+    };
+    function topFunction() {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    // Input field animations
+    document.querySelectorAll('.input-field input').forEach(input => {
+      input.addEventListener('focus', () => {
+        input.parentElement.classList.add('focused');
+      });
+      input.addEventListener('blur', () => {
+        if (!input.value) {
+          input.parentElement.classList.remove('focused');
+        }
+      });
+    });
+
+    // Form submission animation
+    document.querySelector('.prediction-form').addEventListener('submit', function(e) {
+      const button = this.querySelector('.predict-button');
+      button.classList.add('loading');
+      setTimeout(() => {
+        button.classList.remove('loading');
+      }, 2000);
+    });
+  </script>
+</body>
+</html>

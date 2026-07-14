@@ -1,0 +1,12 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="200" fill="#faf0e6"/>
+  <circle cx="70" cy="75" r="16" fill="#6f4e37"/>
+  <circle cx="100" cy="65" r="16" fill="#6f4e37"/>
+  <circle cx="130" cy="75" r="16" fill="#6f4e37"/>
+  <circle cx="85" cy="110" r="16" fill="#6f4e37"/>
+  <circle cx="115" cy="110" r="16" fill="#6f4e37"/>
+  <circle cx="100" cy="140" r="16" fill="#6f4e37"/>
+  <path d="M 70 75 L 85 110 L 100 140" stroke="#228b22" stroke-width="2" fill="none"/>
+  <path d="M 100 65 L 115 110" stroke="#228b22" stroke-width="2" fill="none"/>
+  <text x="100" y="170" text-anchor="middle" font-size="18" fill="#4a3728" font-weight="bold">Coffee</text>
+</svg>

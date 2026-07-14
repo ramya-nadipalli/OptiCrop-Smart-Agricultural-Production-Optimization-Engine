@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Opti Crop</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='about.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <!-- NAVIGATION BAR -->
+  <nav class="navbar">
+    <div class="logo">
+      <i class="fas fa-seedling"></i> OptiCrop
+    </div>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/about" class="active">About</a></li>
+      <li><a href="/FindYourCrop">Find Your Crop</a></li>
+    </ul>
+  </nav>
+
+  <div class="overlay">
+    <div class="content">
+      <h2>Opti Crop: Smart Agricultural Optimization Using ML</h2>
+      <p>
+        The project "Opti Crop: Smart Agricultural Production Optimization Engine" aims to develop an advanced 
+        software system that utilizes data-driven insights to optimize agricultural production for different crops. 
+        By integrating key environmental factors such as Nitrogen (N), Phosphorous (P), Potassium (K) levels, 
+        soil temperature, humidity, pH, rainfall, and crop types, Opti Crop seeks to provide intelligent recommendations 
+        to farmers for maximizing yields and resource efficiency.
+      </p>
+      <p>
+        The knowledge and insights gained through the Opti Crop project can be utilized by agricultural researchers, 
+        policymakers, and stakeholders to advance the understanding of crop-environment interactions and inform the 
+        development of evidence-based agricultural strategies.
+      </p>
+      <p>
+        The Opti Crop project revolutionizes agricultural practices by providing farmers with a smart production 
+        optimization engine. By integrating key environmental factors and crop-specific recommendations, Opti Crop 
+        enables farmers to achieve optimal yields, improve resource efficiency, and contribute to sustainable 
+        agricultural practices.
+      </p>
+      <div class="data-ml-section">
+        <h3>About the Data</h3>
+        <ul class="data-list">
+          <li><span class="icon"><i class="fas fa-leaf"></i></span><b>N (Nitrogen):</b> Essential for plant growth and yield.</li>
+          <li><span class="icon"><i class="fas fa-seedling"></i></span><b>P (Phosphorous):</b> Vital for root development and energy transfer.</li>
+          <li><span class="icon"><i class="fas fa-tint"></i></span><b>K (Potassium):</b> Important for water regulation and disease resistance.</li>
+          <li><span class="icon"><i class="fas fa-thermometer-half"></i></span><b>Temperature:</b> Average soil temperatures for optimal bioactivity range from 50 to 75°F.</li>
+          <li><span class="icon"><i class="fas fa-water"></i></span><b>Humidity:</b> Influences plant transpiration and disease risk.</li>
+          <li><span class="icon"><i class="fas fa-vial"></i></span><b>pH:</b> Indicates soil acidity or alkalinity (Acidic: pH<7, Neutral: pH=7, Basic: pH>7).</li>
+          <li><span class="icon"><i class="fas fa-cloud-rain"></i></span><b>Rainfall:</b> Total precipitation, crucial for crop selection.</li>
+          <li><span class="icon"><i class="fas fa-apple-alt"></i></span><b>Label:</b> Crop type (e.g., Rice, Maize, Chickpea, Banana, Mango, Cotton, Coffee, and more).</li>
+        </ul>
+        <h3>Machine Learning Approach</h3>
+        <ul class="ml-list">
+          <li><span class="icon"><i class="fas fa-chart-bar"></i></span><b>Data Visualization & Analysis:</b> Univariate, bivariate, and multivariate analysis to understand relationships and trends.</li>
+          <li><span class="icon"><i class="fas fa-project-diagram"></i></span><b>Model Building:</b> Implementation of Logistic Regression for crop prediction.</li>
+          <li><span class="icon"><i class="fas fa-tasks"></i></span><b>Model Evaluation:</b> Rigorous performance assessment to ensure high accuracy and reliability.</li>
+          <li><span class="icon"><i class="fas fa-magic"></i></span><b>Prediction Engine:</b> Suggests the best crop based on user-provided soil and environmental parameters.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Connect With Us</h4>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <p>© 2025 OptiCrop. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- SCROLL TO TOP BUTTON -->
+  <button onclick="topFunction()" id="scrollBtn" title="Go to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- JS FOR SCROLL BUTTON -->
+  <script>
+    const scrollBtn = document.getElementById("scrollBtn");
+    window.onscroll = () => {
+      scrollBtn.style.display = window.scrollY > 200 ? "block" : "none";
+    };
+    function topFunction() {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  </script>
+</body>
+</html>

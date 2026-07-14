@@ -1,0 +1,7 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="200" fill="#e8f5e9"/>
+  <circle cx="100" cy="80" r="30" fill="#4caf50"/>
+  <path d="M 100 50 L 85 70 L 95 65 L 75 80 L 95 75 L 85 95 L 100 85 L 115 95 L 105 75 L 125 80 L 105 65 L 115 70 Z" fill="#8bc34a"/>
+  <rect x="95" y="110" width="10" height="25" fill="#8b4513"/>
+  <text x="100" y="170" text-anchor="middle" font-size="16" fill="#2e7d32" font-weight="bold">Crop</text>
+</svg>

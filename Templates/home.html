@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OptiCrop - Smart Agricultural Optimization</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <!-- NAVIGATION BAR -->
+  <nav class="navbar">
+    <div class="logo">
+      <i class="fas fa-seedling"></i> OptiCrop
+    </div>
+    <ul class="nav-links">
+      <li><a href="/" class="active">Home</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/FindYourCrop">Find Your Crop</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <div class="overlay">
+    <div class="content">
+      <h2>Welcome to OptiCrop</h2>
+      <p>
+        Revolutionizing agriculture with AI-powered insights. Our smart prediction system helps farmers make data-driven decisions for optimal crop yields and sustainable farming practices.
+      </p>
+      <div class="cta-buttons">
+        <a href="/about" class="glow-button">Learn More</a>
+        <a href="/FindYourCrop" class="glow-button secondary">Get Started</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURES SECTION -->
+  <section class="features-section">
+    <h2>Why Choose OptiCrop?</h2>
+    <div class="feature-cards">
+      <div class="card">
+        <i class="fas fa-brain fa-2x"></i>
+        <h3>AI-Powered Insights</h3>
+        <p>Advanced machine learning algorithms analyze multiple factors to recommend the best crops for your specific conditions.</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-chart-line fa-2x"></i>
+        <h3>Data-Driven Analysis</h3>
+        <p>Comprehensive analysis of soil nutrients, temperature, humidity, pH levels, and rainfall patterns for optimal results.</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-leaf fa-2x"></i>
+        <h3>Sustainable Farming</h3>
+        <p>Promote eco-friendly practices while maximizing your yield through intelligent resource management.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS SECTION -->
+  <section class="stats-section ">
+    <div class="stat-card">
+      <i class="fas fa-microchip"></i>
+      <h3>2+</h3>
+      <p>ML Models</p>
+    </div>
+    <div class="stat-card">
+      <i class="fas fa-database"></i>
+      <h3>8+</h3>
+      <p>Data Parameters</p>
+    </div>
+    <div class="stat-card">
+      <i class="fas fa-chart-pie"></i>
+      <h3>95%</h3>
+      <p>Prediction Accuracy</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Connect With Us</h4>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <p>© 2025 OptiCrop. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- SCROLL TO TOP BUTTON -->
+  <button onclick="topFunction()" id="scrollBtn" title="Go to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- JS FOR SCROLL BUTTON -->
+  <script>
+    const scrollBtn = document.getElementById("scrollBtn");
+    window.onscroll = () => {
+      scrollBtn.style.display = window.scrollY > 200 ? "block" : "none";
+    };
+    function topFunction() {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    // Add animation on scroll
+    const observerOptions = {
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.card, .stat-card').forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>

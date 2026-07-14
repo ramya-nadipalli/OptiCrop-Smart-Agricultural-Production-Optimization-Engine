@@ -1,0 +1,10 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="200" fill="#fffacd"/>
+  <ellipse cx="75" cy="85" rx="18" ry="35" fill="#ffd700" transform="rotate(-20 75 85)"/>
+  <ellipse cx="100" cy="70" rx="18" ry="35" fill="#ffd700" transform="rotate(0 100 70)"/>
+  <ellipse cx="125" cy="85" rx="18" ry="35" fill="#ffd700" transform="rotate(20 125 85)"/>
+  <line x1="75" y1="120" x2="75" y2="140" stroke="#228b22" stroke-width="3"/>
+  <line x1="100" y1="105" x2="100" y2="140" stroke="#228b22" stroke-width="3"/>
+  <line x1="125" y1="120" x2="125" y2="140" stroke="#228b22" stroke-width="3"/>
+  <text x="100" y="170" text-anchor="middle" font-size="18" fill="#daa520" font-weight="bold">Banana</text>
+</svg>
