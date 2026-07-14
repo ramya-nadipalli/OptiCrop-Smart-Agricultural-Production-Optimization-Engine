@@ -34,7 +34,10 @@ The model is trained using agricultural data containing soil and environmental p
 Demo Video:
 https://drive.google.com/file/d/1riqeeNQowd4-YmW2Cqg8P3yzEZXwgfD6/view?usp=sharing
 ## Installation
-
+#AIML Project Demo
+OptiCrop: Smart Agricultural Production Optimization Engine | AIML Project
+https://drive.google.com/file/d/1tP-7Kcd_yOYgyi1_vl8v7ZQhQ-tEy71-/view?usp=sharing
+# Overall Project
 ```bash
 pip install -r requirements.txt
 python app.py
