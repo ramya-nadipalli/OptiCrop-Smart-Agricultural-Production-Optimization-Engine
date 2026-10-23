@@ -3,98 +3,365 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Opti Crop</title>
+  <meta name="description" content="Learn about OptiCrop — an AI-powered crop recommendation system using machine learning to help farmers improve yield and sustainability.">
+  <title>About – OptiCrop</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='about.css') }}">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-  <!-- NAVIGATION BAR -->
-  <nav class="navbar">
-    <div class="logo">
-      <i class="fas fa-seedling"></i> OptiCrop
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-brand">
+      <i class="fas fa-seedling"></i>
+      <span>OptiCrop</span>
     </div>
-    <ul class="nav-links">
+    <ul class="nav-menu" id="navMenu">
       <li><a href="/">Home</a></li>
       <li><a href="/about" class="active">About</a></li>
-      <li><a href="/FindYourCrop">Find Your Crop</a></li>
+      <li><a href="/FindYourCrop" class="nav-btn">Find Your Crop</a></li>
     </ul>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
   </nav>
 
-  <div class="overlay">
-    <div class="content">
-      <h2>Opti Crop: Smart Agricultural Optimization Using ML</h2>
-      <p>
-        The project "Opti Crop: Smart Agricultural Production Optimization Engine" aims to develop an advanced 
-        software system that utilizes data-driven insights to optimize agricultural production for different crops. 
-        By integrating key environmental factors such as Nitrogen (N), Phosphorous (P), Potassium (K) levels, 
-        soil temperature, humidity, pH, rainfall, and crop types, Opti Crop seeks to provide intelligent recommendations 
-        to farmers for maximizing yields and resource efficiency.
-      </p>
-      <p>
-        The knowledge and insights gained through the Opti Crop project can be utilized by agricultural researchers, 
-        policymakers, and stakeholders to advance the understanding of crop-environment interactions and inform the 
-        development of evidence-based agricultural strategies.
-      </p>
-      <p>
-        The Opti Crop project revolutionizes agricultural practices by providing farmers with a smart production 
-        optimization engine. By integrating key environmental factors and crop-specific recommendations, Opti Crop 
-        enables farmers to achieve optimal yields, improve resource efficiency, and contribute to sustainable 
-        agricultural practices.
-      </p>
-      <div class="data-ml-section">
-        <h3>About the Data</h3>
-        <ul class="data-list">
-          <li><span class="icon"><i class="fas fa-leaf"></i></span><b>N (Nitrogen):</b> Essential for plant growth and yield.</li>
-          <li><span class="icon"><i class="fas fa-seedling"></i></span><b>P (Phosphorous):</b> Vital for root development and energy transfer.</li>
-          <li><span class="icon"><i class="fas fa-tint"></i></span><b>K (Potassium):</b> Important for water regulation and disease resistance.</li>
-          <li><span class="icon"><i class="fas fa-thermometer-half"></i></span><b>Temperature:</b> Average soil temperatures for optimal bioactivity range from 50 to 75°F.</li>
-          <li><span class="icon"><i class="fas fa-water"></i></span><b>Humidity:</b> Influences plant transpiration and disease risk.</li>
-          <li><span class="icon"><i class="fas fa-vial"></i></span><b>pH:</b> Indicates soil acidity or alkalinity (Acidic: pH<7, Neutral: pH=7, Basic: pH>7).</li>
-          <li><span class="icon"><i class="fas fa-cloud-rain"></i></span><b>Rainfall:</b> Total precipitation, crucial for crop selection.</li>
-          <li><span class="icon"><i class="fas fa-apple-alt"></i></span><b>Label:</b> Crop type (e.g., Rice, Maize, Chickpea, Banana, Mango, Cotton, Coffee, and more).</li>
-        </ul>
-        <h3>Machine Learning Approach</h3>
-        <ul class="ml-list">
-          <li><span class="icon"><i class="fas fa-chart-bar"></i></span><b>Data Visualization & Analysis:</b> Univariate, bivariate, and multivariate analysis to understand relationships and trends.</li>
-          <li><span class="icon"><i class="fas fa-project-diagram"></i></span><b>Model Building:</b> Implementation of Logistic Regression for crop prediction.</li>
-          <li><span class="icon"><i class="fas fa-tasks"></i></span><b>Model Evaluation:</b> Rigorous performance assessment to ensure high accuracy and reliability.</li>
-          <li><span class="icon"><i class="fas fa-magic"></i></span><b>Prediction Engine:</b> Suggests the best crop based on user-provided soil and environmental parameters.</li>
-        </ul>
-      </div>
+  <!-- ===== PAGE HEADER ===== -->
+  <div class="page-header">
+    <div class="header-content">
+      <p class="header-tag"><i class="fas fa-info-circle"></i> About the Project</p>
+      <h1>OptiCrop: Smart Agricultural<br>Optimization Using ML</h1>
+      <p>An AI-powered system that helps farmers select the most suitable crop based on soil and environmental conditions.</p>
     </div>
   </div>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-content">
-      <div class="footer-section">
-        <h4>Connect With Us</h4>
-        <div class="social-links">
-          <a href="#"><i class="fab fa-facebook"></i></a>
-          <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="#"><i class="fab fa-linkedin"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
+  <!-- ===== MAIN ===== -->
+  <main class="main-content">
+
+    <!-- Project Overview -->
+    <section class="overview-section">
+      <div class="section-title">
+        <h2>Project Overview</h2>
+        <p>What OptiCrop does and why it matters</p>
+      </div>
+      <div class="overview-grid">
+        <div class="overview-text">
+          <p>
+            The <strong>OptiCrop</strong> project develops an advanced software system that utilizes data-driven insights to optimize agricultural production. By integrating key environmental factors — Nitrogen (N), Phosphorous (P), Potassium (K), soil temperature, humidity, pH, and rainfall — OptiCrop provides intelligent recommendations to farmers for maximizing yields and resource efficiency.
+          </p>
+          <p>
+            The knowledge and insights gained through OptiCrop can be used by agricultural researchers, policymakers, and stakeholders to advance the understanding of crop-environment interactions and inform evidence-based strategies.
+          </p>
+          <p>
+            OptiCrop revolutionizes agricultural practices by providing farmers with a smart production optimization engine. By integrating key environmental factors and crop-specific recommendations, it enables farmers to achieve optimal yields, improve resource efficiency, and contribute to sustainable agricultural practices.
+          </p>
+          <a href="/FindYourCrop" class="btn-primary">
+            <i class="fas fa-seedling"></i> Try OptiCrop Now
+          </a>
+        </div>
+        <div class="overview-cards">
+          <div class="mini-card">
+            <i class="fas fa-leaf"></i>
+            <h3>22+ Crops</h3>
+            <p>Covered crop varieties</p>
+          </div>
+          <div class="mini-card">
+            <i class="fas fa-bullseye"></i>
+            <h3>95%</h3>
+            <p>Prediction accuracy</p>
+          </div>
+          <div class="mini-card">
+            <i class="fas fa-flask"></i>
+            <h3>7 Parameters</h3>
+            <p>Analyzed per prediction</p>
+          </div>
+          <div class="mini-card">
+            <i class="fas fa-database"></i>
+            <h3>2200+</h3>
+            <p>Training data records</p>
+          </div>
         </div>
       </div>
-      <p>© 2025 OptiCrop. All rights reserved.</p>
+    </section>
+
+    <!-- Dataset Parameters -->
+    <section class="params-section">
+      <div class="section-title">
+        <h2>About the Data</h2>
+        <p>The 7 input parameters used for crop prediction</p>
+      </div>
+      <div class="params-grid">
+
+        <div class="param-card">
+          <div class="param-icon n-icon"><span>N</span></div>
+          <div class="param-info">
+            <h3>Nitrogen (N)</h3>
+            <p>Essential macronutrient for chlorophyll production, plant growth, and yield. Higher N values indicate nitrogen-rich soil ideal for leafy crops.</p>
+            <div class="param-range">
+              <span>Range: 0 – 140 mg/kg</span>
+              <div class="range-bar"><div class="range-fill" style="width:70%; background:#27ae60;"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="param-card">
+          <div class="param-icon p-icon"><span>P</span></div>
+          <div class="param-info">
+            <h3>Phosphorus (P)</h3>
+            <p>Vital for root development, energy transfer, and flower/fruit production. Directly affects nutrient uptake efficiency in the plant.</p>
+            <div class="param-range">
+              <span>Range: 5 – 145 mg/kg</span>
+              <div class="range-bar"><div class="range-fill" style="width:55%; background:#7c3aed;"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="param-card">
+          <div class="param-icon k-icon"><span>K</span></div>
+          <div class="param-info">
+            <h3>Potassium (K)</h3>
+            <p>Important for water regulation, enzyme activation, and disease resistance. Affects overall plant health and stress tolerance.</p>
+            <div class="param-range">
+              <span>Range: 5 – 205 mg/kg</span>
+              <div class="range-bar"><div class="range-fill" style="width:65%; background:#d97706;"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="param-card">
+          <div class="param-icon t-icon"><i class="fas fa-thermometer-half"></i></div>
+          <div class="param-info">
+            <h3>Temperature</h3>
+            <p>Average soil temperature affects seed germination, root growth, and microbial activity. Optimal bioactivity range: 50–75°F (10–24°C).</p>
+            <div class="param-range">
+              <span>Range: 8°C – 44°C</span>
+              <div class="range-bar"><div class="range-fill" style="width:60%; background:#dc2626;"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="param-card">
+          <div class="param-icon h-icon"><i class="fas fa-tint"></i></div>
+          <div class="param-info">
+            <h3>Humidity</h3>
+            <p>Relative humidity influences plant transpiration, fungal disease risk, and crop water requirements throughout the growing season.</p>
+            <div class="param-range">
+              <span>Range: 14% – 100%</span>
+              <div class="range-bar"><div class="range-fill" style="width:80%; background:#059669;"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="param-card">
+          <div class="param-icon ph-icon"><span>pH</span></div>
+          <div class="param-info">
+            <h3>pH Level</h3>
+            <p>Indicates soil acidity or alkalinity. <em>Acidic:</em> pH &lt; 7, <em>Neutral:</em> pH = 7, <em>Basic:</em> pH &gt; 7. Strongly affects nutrient availability.</p>
+            <div class="param-range">
+              <span>Range: 3.5 – 9.9</span>
+              <div class="range-bar"><div class="range-fill" style="width:45%; background:#2563eb;"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="param-card full-span">
+          <div class="param-icon r-icon"><i class="fas fa-cloud-rain"></i></div>
+          <div class="param-info">
+            <h3>Rainfall</h3>
+            <p>Total annual precipitation is crucial for crop selection and irrigation planning. Determines water availability and stress resistance requirements for the crop. Different crops have very different rainfall requirements — rice needs much more than maize, for example.</p>
+            <div class="param-range">
+              <span>Range: 20 – 300 mm</span>
+              <div class="range-bar"><div class="range-fill" style="width:40%; background:#0891b2;"></div></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ML Approach -->
+    <section class="ml-section">
+      <div class="section-title">
+        <h2>Machine Learning Approach</h2>
+        <p>How the prediction model was built and validated</p>
+      </div>
+      <div class="ml-steps">
+
+        <div class="ml-step">
+          <div class="ml-step-num">01</div>
+          <div class="ml-step-icon"><i class="fas fa-chart-bar"></i></div>
+          <div class="ml-step-body">
+            <h3>Data Visualization &amp; Analysis</h3>
+            <p>Performed univariate, bivariate, and multivariate analysis using Matplotlib and Seaborn to understand relationships between soil parameters and crop types. Identified key correlations and data distributions.</p>
+            <div class="tech-tags">
+              <span>Pandas</span><span>Matplotlib</span><span>Seaborn</span><span>EDA</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ml-step">
+          <div class="ml-step-num">02</div>
+          <div class="ml-step-icon"><i class="fas fa-code"></i></div>
+          <div class="ml-step-body">
+            <h3>Data Preprocessing</h3>
+            <p>Applied log transformation on the Potassium (K) values to normalize the skewed distribution. Split data into training and test sets. Ensured no missing values or outliers affected model training.</p>
+            <div class="tech-tags">
+              <span>Scikit-learn</span><span>Log Transform</span><span>NumPy</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ml-step">
+          <div class="ml-step-num">03</div>
+          <div class="ml-step-icon"><i class="fas fa-project-diagram"></i></div>
+          <div class="ml-step-body">
+            <h3>Model Building</h3>
+            <p>Implemented a Logistic Regression classifier using Scikit-learn. Logistic Regression was chosen for its interpretability, speed, and strong performance on this type of multi-class classification problem.</p>
+            <div class="tech-tags">
+              <span>Logistic Regression</span><span>Multi-class</span><span>Scikit-learn</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ml-step">
+          <div class="ml-step-num">04</div>
+          <div class="ml-step-icon"><i class="fas fa-tasks"></i></div>
+          <div class="ml-step-body">
+            <h3>Model Evaluation</h3>
+            <p>Evaluated using accuracy score, confusion matrix, and classification report. Achieved over 95% accuracy on the test set. Model was serialized using Pickle for deployment in the Flask web application.</p>
+            <div class="tech-tags">
+              <span>95% Accuracy</span><span>Confusion Matrix</span><span>Pickle</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ml-step">
+          <div class="ml-step-num">05</div>
+          <div class="ml-step-icon"><i class="fas fa-globe"></i></div>
+          <div class="ml-step-body">
+            <h3>Web Deployment</h3>
+            <p>Deployed the model as a Flask web application. Users submit soil and climate data through an HTML form, the backend processes it through the model, and the recommended crop is returned instantly.</p>
+            <div class="tech-tags">
+              <span>Python</span><span>Flask</span><span>HTML/CSS</span><span>Jinja2</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Tech Stack -->
+    <section class="tech-section">
+      <div class="section-title">
+        <h2>Technologies Used</h2>
+        <p>The tools and libraries that power OptiCrop</p>
+      </div>
+      <div class="tech-grid">
+        <div class="tech-card">
+          <i class="fab fa-python"></i>
+          <span>Python</span>
+        </div>
+        <div class="tech-card">
+          <i class="fas fa-flask"></i>
+          <span>Flask</span>
+        </div>
+        <div class="tech-card">
+          <i class="fas fa-brain"></i>
+          <span>Scikit-learn</span>
+        </div>
+        <div class="tech-card">
+          <i class="fas fa-table"></i>
+          <span>Pandas</span>
+        </div>
+        <div class="tech-card">
+          <i class="fas fa-calculator"></i>
+          <span>NumPy</span>
+        </div>
+        <div class="tech-card">
+          <i class="fas fa-chart-bar"></i>
+          <span>Matplotlib</span>
+        </div>
+        <div class="tech-card">
+          <i class="fab fa-html5"></i>
+          <span>HTML5</span>
+        </div>
+        <div class="tech-card">
+          <i class="fab fa-css3-alt"></i>
+          <span>CSS3</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+      <h2>Try It Yourself</h2>
+      <p>Enter your soil and climate data and get an instant crop recommendation powered by machine learning.</p>
+      <a href="/FindYourCrop" class="btn-primary large">
+        <i class="fas fa-seedling"></i> Find Your Crop
+      </a>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <i class="fas fa-seedling"></i>
+        <span>OptiCrop</span>
+        <p>AI-powered agricultural crop recommendation system.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/FindYourCrop">Find Your Crop</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="#"><i class="fab fa-github"></i> GitHub</a></li>
+          <li><a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+          <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 OptiCrop &mdash; Built by Ramya Nadipalli</p>
     </div>
   </footer>
 
-  <!-- SCROLL TO TOP BUTTON -->
-  <button onclick="topFunction()" id="scrollBtn" title="Go to top">
-    <i class="fas fa-arrow-up"></i>
-  </button>
+  <button class="scroll-top" id="scrollTop"><i class="fas fa-arrow-up"></i></button>
 
-  <!-- JS FOR SCROLL BUTTON -->
   <script>
-    const scrollBtn = document.getElementById("scrollBtn");
-    window.onscroll = () => {
-      scrollBtn.style.display = window.scrollY > 200 ? "block" : "none";
-    };
-    function topFunction() {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
+    // Navbar
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 50));
+
+    // Hamburger
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('navMenu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      navMenu.classList.toggle('open');
+    });
+
+    // Scroll to top
+    const scrollTop = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => scrollTop.classList.toggle('visible', window.scrollY > 300));
+    scrollTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Animate sections on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.param-card, .ml-step, .tech-card, .mini-card').forEach(el => observer.observe(el));
   </script>
 </body>
 </html>

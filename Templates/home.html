@@ -3,124 +3,323 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OptiCrop - Smart Agricultural Optimization</title>
+  <meta name="description" content="OptiCrop – AI-powered crop recommendation system using machine learning. Get smart agricultural insights based on soil and climate data.">
+  <title>OptiCrop – Smart Agricultural Optimization Engine</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-  <!-- NAVIGATION BAR -->
-  <nav class="navbar">
-    <div class="logo">
-      <i class="fas fa-seedling"></i> OptiCrop
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-brand">
+      <i class="fas fa-seedling"></i>
+      <span>OptiCrop</span>
     </div>
-    <ul class="nav-links">
+    <ul class="nav-menu" id="navMenu">
       <li><a href="/" class="active">Home</a></li>
       <li><a href="/about">About</a></li>
-      <li><a href="/FindYourCrop">Find Your Crop</a></li>
+      <li><a href="/FindYourCrop" class="nav-btn">Find Your Crop</a></li>
     </ul>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
   </nav>
 
-  <!-- HERO SECTION -->
-  <div class="overlay">
-    <div class="content">
-      <h2>Welcome to OptiCrop</h2>
-      <p>
-        Revolutionizing agriculture with AI-powered insights. Our smart prediction system helps farmers make data-driven decisions for optimal crop yields and sustainable farming practices.
+  <!-- ===== HERO SECTION ===== -->
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-tag"><i class="fas fa-leaf"></i> AI-Powered Agriculture</p>
+      <h1>Grow Smarter with <span class="highlight">OptiCrop</span></h1>
+      <p class="hero-desc">
+        Our machine learning model analyzes your soil nutrients and environmental conditions to recommend the most suitable crop — helping you maximize yield and farm sustainably.
       </p>
-      <div class="cta-buttons">
-        <a href="/about" class="glow-button">Learn More</a>
-        <a href="/FindYourCrop" class="glow-button secondary">Get Started</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- FEATURES SECTION -->
-  <section class="features-section">
-    <h2>Why Choose OptiCrop?</h2>
-    <div class="feature-cards">
-      <div class="card">
-        <i class="fas fa-brain fa-2x"></i>
-        <h3>AI-Powered Insights</h3>
-        <p>Advanced machine learning algorithms analyze multiple factors to recommend the best crops for your specific conditions.</p>
-      </div>
-      <div class="card">
-        <i class="fas fa-chart-line fa-2x"></i>
-        <h3>Data-Driven Analysis</h3>
-        <p>Comprehensive analysis of soil nutrients, temperature, humidity, pH levels, and rainfall patterns for optimal results.</p>
-      </div>
-      <div class="card">
-        <i class="fas fa-leaf fa-2x"></i>
-        <h3>Sustainable Farming</h3>
-        <p>Promote eco-friendly practices while maximizing your yield through intelligent resource management.</p>
+      <div class="hero-btns">
+        <a href="/FindYourCrop" class="btn-primary">
+          <i class="fas fa-seedling"></i> Find Your Crop
+        </a>
+        <a href="/about" class="btn-outline">
+          <i class="fas fa-info-circle"></i> Learn More
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- STATS SECTION -->
-  <section class="stats-section ">
+  <!-- ===== STATS SECTION ===== -->
+  <section class="stats-section">
     <div class="stat-card">
-      <i class="fas fa-microchip"></i>
-      <h3>2+</h3>
-      <p>ML Models</p>
+      <i class="fas fa-leaf"></i>
+      <h3>22+</h3>
+      <p>Crop Varieties</p>
     </div>
     <div class="stat-card">
-      <i class="fas fa-database"></i>
-      <h3>8+</h3>
-      <p>Data Parameters</p>
+      <i class="fas fa-flask"></i>
+      <h3>7</h3>
+      <p>Soil Parameters</p>
     </div>
     <div class="stat-card">
-      <i class="fas fa-chart-pie"></i>
+      <i class="fas fa-bullseye"></i>
       <h3>95%</h3>
       <p>Prediction Accuracy</p>
     </div>
+    <div class="stat-card">
+      <i class="fas fa-database"></i>
+      <h3>2200+</h3>
+      <p>Training Samples</p>
+    </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer>
+  <!-- ===== HOW IT WORKS ===== -->
+  <section class="how-section">
+    <div class="section-title">
+      <h2>How It Works</h2>
+      <p>Three simple steps to get your crop recommendation</p>
+    </div>
+    <div class="steps-row">
+      <div class="step-box">
+        <div class="step-num">1</div>
+        <div class="step-icon"><i class="fas fa-edit"></i></div>
+        <h3>Enter Your Soil Data</h3>
+        <p>Input your soil NPK values, temperature, humidity, pH level, and rainfall data into the form.</p>
+      </div>
+      <div class="step-arrow"><i class="fas fa-chevron-right"></i></div>
+      <div class="step-box">
+        <div class="step-num">2</div>
+        <div class="step-icon"><i class="fas fa-brain"></i></div>
+        <h3>AI Analyzes Data</h3>
+        <p>Our Logistic Regression model processes your inputs through thousands of trained agricultural patterns.</p>
+      </div>
+      <div class="step-arrow"><i class="fas fa-chevron-right"></i></div>
+      <div class="step-box">
+        <div class="step-num">3</div>
+        <div class="step-icon"><i class="fas fa-seedling"></i></div>
+        <h3>Get Recommendation</h3>
+        <p>Receive the best crop recommendation tailored specifically to your farm's unique conditions.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FEATURES SECTION ===== -->
+  <section class="features-section">
+    <div class="section-title">
+      <h2>Why Choose OptiCrop?</h2>
+      <p>Built with data science to empower every farmer</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-brain"></i>
+        </div>
+        <h3>Machine Learning</h3>
+        <p>Powered by Logistic Regression trained on real agricultural data — delivering highly accurate crop predictions every time.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-chart-line"></i>
+        </div>
+        <h3>Data-Driven Results</h3>
+        <p>Analyzes 7 key soil and environmental parameters together for a comprehensive, context-aware recommendation.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-leaf"></i>
+        </div>
+        <h3>Sustainable Farming</h3>
+        <p>Promotes eco-friendly decisions by matching crops to natural conditions, reducing need for excess fertilizers.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-bolt"></i>
+        </div>
+        <h3>Instant Results</h3>
+        <p>No waiting. Get your crop recommendation in milliseconds. Simple form, instant answer — no signup needed.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-globe"></i>
+        </div>
+        <h3>22+ Crops Covered</h3>
+        <p>From rice and wheat to coffee and coconut — our model covers a wide variety of crops for diverse farming needs.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-lock-open"></i>
+        </div>
+        <h3>Free to Use</h3>
+        <p>Completely free, no login required. Enter your parameters and get your recommendation right away.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CROPS SUPPORTED ===== -->
+  <section class="crops-section">
+    <div class="section-title">
+      <h2>Crops We Support</h2>
+      <p>Our model can recommend any of these 22+ crop types</p>
+    </div>
+    <div class="crops-list">
+      <span>🌾 Rice</span>
+      <span>🌽 Maize</span>
+      <span>🥜 Chickpea</span>
+      <span>🫘 Kidney Beans</span>
+      <span>🫛 Pigeon Peas</span>
+      <span>🌿 Moth Beans</span>
+      <span>🫘 Mung Bean</span>
+      <span>🫘 Black Gram</span>
+      <span>🫘 Lentil</span>
+      <span>🍌 Banana</span>
+      <span>🥭 Mango</span>
+      <span>🍇 Grapes</span>
+      <span>🍉 Watermelon</span>
+      <span>🍈 Muskmelon</span>
+      <span>🍎 Apple</span>
+      <span>🍊 Orange</span>
+      <span>🥥 Coconut</span>
+      <span>🪴 Papaya</span>
+      <span>☕ Coffee</span>
+      <span>🌿 Jute</span>
+      <span>🌿 Cotton</span>
+      <span>🍑 Pomegranate</span>
+    </div>
+  </section>
+
+  <!-- ===== CTA SECTION ===== -->
+  <section class="cta-section">
+    <h2>Ready to Find Your Best Crop?</h2>
+    <p>Enter your soil and climate data and let OptiCrop do the rest. It's free and takes less than a minute.</p>
+    <a href="/FindYourCrop" class="btn-primary large">
+      <i class="fas fa-seedling"></i> Get Started Now
+    </a>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
     <div class="footer-content">
-      <div class="footer-section">
-        <h4>Connect With Us</h4>
-        <div class="social-links">
-          <a href="#"><i class="fab fa-facebook"></i></a>
-          <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="#"><i class="fab fa-linkedin"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
+      <div class="footer-brand">
+        <i class="fas fa-seedling"></i>
+        <span>OptiCrop</span>
+        <p>AI-powered agricultural crop recommendation system.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/FindYourCrop">Find Your Crop</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Technologies</h4>
+        <ul>
+          <li><a href="#">Python &amp; Flask</a></li>
+          <li><a href="#">Scikit-learn</a></li>
+          <li><a href="#">Pandas / NumPy</a></li>
+          <li><a href="#">Machine Learning</a></li>
+        </ul>
+      </div>
+      <div class="footer-social">
+        <h4>Connect</h4>
+        <div class="socials">
+          <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+          <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
         </div>
       </div>
-      <p>© 2025 OptiCrop. All rights reserved.</p>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 OptiCrop &mdash; Built by Ramya Nadipalli</p>
     </div>
   </footer>
 
-  <!-- SCROLL TO TOP BUTTON -->
-  <button onclick="topFunction()" id="scrollBtn" title="Go to top">
+  <!-- Scroll to Top -->
+  <button class="scroll-top" id="scrollTop" title="Back to top">
     <i class="fas fa-arrow-up"></i>
   </button>
 
-  <!-- JS FOR SCROLL BUTTON -->
   <script>
-    const scrollBtn = document.getElementById("scrollBtn");
-    window.onscroll = () => {
-      scrollBtn.style.display = window.scrollY > 200 ? "block" : "none";
-    };
-    function topFunction() {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    });
 
-    // Add animation on scroll
-    const observerOptions = {
-      threshold: 0.1
-    };
+    // Hamburger menu
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('navMenu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      navMenu.classList.toggle('open');
+    });
 
+    // Close menu when link clicked
+    navMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        navMenu.classList.remove('open');
+      });
+    });
+
+    // Scroll to top button
+    const scrollTop = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+      scrollTop.classList.toggle('visible', window.scrollY > 300);
+    });
+    scrollTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Animate on scroll
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('animate');
+          entry.target.classList.add('fade-in');
         }
       });
-    }, observerOptions);
+    }, { threshold: 0.15 });
 
-    document.querySelectorAll('.card, .stat-card').forEach((el) => observer.observe(el));
+    document.querySelectorAll('.stat-card, .feature-card, .step-box').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Stats counter animation
+    function animateCounter(el, target, suffix = '') {
+      let count = 0;
+      const duration = 1800;
+      const step = target / (duration / 16);
+      const timer = setInterval(() => {
+        count += step;
+        if (count >= target) {
+          count = target;
+          clearInterval(timer);
+        }
+        el.textContent = Math.floor(count).toLocaleString() + suffix;
+      }, 16);
+    }
+
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const card = entry.target;
+          const h3 = card.querySelector('h3');
+          const raw = h3.dataset.val;
+          const suffix = h3.dataset.suffix || '';
+          animateCounter(h3, parseInt(raw), suffix);
+          statsObserver.unobserve(card);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.stat-card').forEach(card => {
+      const h3 = card.querySelector('h3');
+      const text = h3.textContent;
+      const num = parseInt(text.replace(/\D/g, ''));
+      const suffix = text.replace(/[0-9,]/g, '').trim();
+      h3.dataset.val = num;
+      h3.dataset.suffix = suffix;
+      h3.textContent = '0' + suffix;
+      statsObserver.observe(card);
+    });
   </script>
 </body>
 </html>

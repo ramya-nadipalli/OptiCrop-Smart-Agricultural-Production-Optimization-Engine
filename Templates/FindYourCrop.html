@@ -3,185 +3,338 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Find Your Crop - OptiCrop</title>
+  <meta name="description" content="Find your perfect crop using AI. Enter soil and environmental parameters to get an instant machine learning crop recommendation.">
+  <title>Find Your Crop – OptiCrop</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='FindYourCrop.css') }}">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-  <!-- NAVIGATION BAR -->
-  <nav class="navbar">
-    <div class="logo">
-      <i class="fas fa-seedling"></i> OptiCrop
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-brand">
+      <i class="fas fa-seedling"></i>
+      <span>OptiCrop</span>
     </div>
-    <ul class="nav-links">
+    <ul class="nav-menu" id="navMenu">
       <li><a href="/">Home</a></li>
       <li><a href="/about">About</a></li>
-      <li><a href="/FindYourCrop" class="active">Find Your Crop</a></li>
+      <li><a href="/FindYourCrop" class="active nav-btn">Find Your Crop</a></li>
     </ul>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
   </nav>
 
-  <div class="overlay">
-    <div class="content">
-      <div class="form-container">
-        <h2>Find Your Perfect Crop</h2>
-        <p class="subtitle">Enter your soil and environmental conditions to get AI-powered crop recommendations</p>
-
-        <form method="POST" action="{{ url_for('FindYourCrop') }}" class="prediction-form">
-          <div class="input-group">
-            <div class="input-field">
-              <i class="fas fa-flask"></i>
-              <input type="text" name="N" placeholder="Nitrogen (N)" required>
-              <div class="input-tooltip">Essential nutrient for plant growth</div>
-            </div>
-            <div class="input-field">
-              <i class="fas fa-atom"></i>
-              <input type="text" name="P" placeholder="Phosphorus (P)" required>
-              <div class="input-tooltip">Vital for root development</div>
-            </div>
-          </div>
-
-          <div class="input-group">
-            <div class="input-field">
-              <i class="fas fa-bolt"></i>
-              <input type="text" name="K" placeholder="Potassium (K)" required>
-              <div class="input-tooltip">Important for water regulation</div>
-            </div>
-            <div class="input-field">
-              <i class="fas fa-thermometer-half"></i>
-              <input type="text" name="temperature" placeholder="Temperature (°C)" required>
-              <div class="input-tooltip">Soil temperature for optimal growth</div>
-            </div>
-          </div>
-
-          <div class="input-group">
-            <div class="input-field">
-              <i class="fas fa-tint"></i>
-              <input type="text" name="humidity" placeholder="Humidity (%)" required>
-              <div class="input-tooltip">Relative humidity level</div>
-            </div>
-            <div class="input-field">
-              <i class="fas fa-vial"></i>
-              <input type="text" name="ph" placeholder="pH Level" required>
-              <div class="input-tooltip">Soil acidity/alkalinity (0-14)</div>
-            </div>
-          </div>
-
-          <div class="input-group">
-            <div class="input-field full-width">
-              <i class="fas fa-cloud-rain"></i>
-              <input type="text" name="rainfall" placeholder="Rainfall (mm)" required>
-              <div class="input-tooltip">Annual rainfall in millimeters</div>
-            </div>
-          </div>
-
-          <button type="submit" class="predict-button">
-            <span class="button-text">Predict Crop</span>
-            <i class="fas fa-magic"></i>
-          </button>
-        </form>
-
-        {% if prediction %}
-        <div class="prediction-result">
-          <div class="result-icon">
-            <i class="fas fa-seedling"></i>
-          </div>
-          <div class="result-content">
-            <h3>Recommended Crop</h3>
-            <p class="crop-name">{{ prediction }}</p>
-            <div class="crop-details">
-              <div class="detail-item">
-                <i class="fas fa-sun"></i>
-                <span>Optimal Growing Conditions</span>
-              </div>
-              <div class="detail-item">
-                <i class="fas fa-calendar-alt"></i>
-                <span>Growing Season</span>
-              </div>
-              <div class="detail-item">
-                <i class="fas fa-chart-line"></i>
-                <span>Expected Yield</span>
-              </div>
-              <div class="detail-item">
-                <i class="fas fa-leaf"></i>
-                <span>Key Benefits</span>
-              </div>
-            </div>
-            <div class="crop-info">
-              <p>Based on your soil and environmental conditions, {{ prediction }} is the optimal crop choice. This recommendation is powered by our advanced machine learning model that analyzes multiple factors to ensure the best possible yield.</p>
-              <div class="crop-stats">
-                <div class="stat">
-                  <span class="stat-value">95%</span>
-                  <span class="stat-label">Match Score</span>
-                </div>
-                <div class="stat">
-                  <span class="stat-value">High</span>
-                  <span class="stat-label">Yield Potential</span>
-                </div>
-                <div class="stat">
-                  <span class="stat-value">Moderate</span>
-                  <span class="stat-label">Maintenance</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        {% endif %}
-      </div>
+  <!-- ===== PAGE HEADER ===== -->
+  <div class="page-bg">
+    <div class="page-header">
+      <h1><i class="fas fa-seedling"></i> Find Your Perfect Crop</h1>
+      <p>Enter your soil and environmental data below. Our AI will recommend the best crop to grow.</p>
     </div>
   </div>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-content">
-      <div class="footer-section">
-        <h4>Connect With Us</h4>
-        <div class="social-links">
-          <a href="#"><i class="fab fa-facebook"></i></a>
-          <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="#"><i class="fab fa-linkedin"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="main-wrapper">
+    <div class="content-grid">
+
+      <!-- LEFT: FORM -->
+      <div class="form-section">
+        <div class="form-card">
+          <div class="form-card-header">
+            <div class="header-icon"><i class="fas fa-flask"></i></div>
+            <div>
+              <h2>Soil &amp; Climate Parameters</h2>
+              <p>All 7 fields are required for accurate prediction</p>
+            </div>
+          </div>
+
+          <form method="POST" action="{{ url_for('FindYourCrop') }}" id="cropForm">
+
+            <div class="input-row">
+              <!-- Nitrogen -->
+              <div class="input-group">
+                <label for="N">
+                  <span class="badge badge-n">N</span> Nitrogen
+                </label>
+                <div class="input-box">
+                  <i class="fas fa-leaf"></i>
+                  <input type="number" id="N" name="N" placeholder="e.g. 90" min="0" max="300" step="0.1" required>
+                  <span class="unit">mg/kg</span>
+                </div>
+                <span class="hint">Essential for plant growth &amp; chlorophyll</span>
+              </div>
+
+              <!-- Phosphorus -->
+              <div class="input-group">
+                <label for="P">
+                  <span class="badge badge-p">P</span> Phosphorus
+                </label>
+                <div class="input-box">
+                  <i class="fas fa-atom"></i>
+                  <input type="number" id="P" name="P" placeholder="e.g. 42" min="0" max="300" step="0.1" required>
+                  <span class="unit">mg/kg</span>
+                </div>
+                <span class="hint">Vital for root development</span>
+              </div>
+            </div>
+
+            <div class="input-row">
+              <!-- Potassium -->
+              <div class="input-group">
+                <label for="K">
+                  <span class="badge badge-k">K</span> Potassium
+                </label>
+                <div class="input-box">
+                  <i class="fas fa-bolt"></i>
+                  <input type="number" id="K" name="K" placeholder="e.g. 43" min="0" max="300" step="0.1" required>
+                  <span class="unit">mg/kg</span>
+                </div>
+                <span class="hint">Important for water regulation</span>
+              </div>
+
+              <!-- Temperature -->
+              <div class="input-group">
+                <label for="temperature">
+                  <span class="badge badge-t"><i class="fas fa-thermometer-half"></i></span> Temperature
+                </label>
+                <div class="input-box">
+                  <i class="fas fa-thermometer-half"></i>
+                  <input type="number" id="temperature" name="temperature" placeholder="e.g. 20.8" min="-10" max="60" step="0.1" required>
+                  <span class="unit">°C</span>
+                </div>
+                <span class="hint">Average temperature in Celsius</span>
+              </div>
+            </div>
+
+            <div class="input-row">
+              <!-- Humidity -->
+              <div class="input-group">
+                <label for="humidity">
+                  <span class="badge badge-h"><i class="fas fa-tint"></i></span> Humidity
+                </label>
+                <div class="input-box">
+                  <i class="fas fa-tint"></i>
+                  <input type="number" id="humidity" name="humidity" placeholder="e.g. 82" min="0" max="100" step="0.1" required>
+                  <span class="unit">%</span>
+                </div>
+                <span class="hint">Relative humidity percentage</span>
+              </div>
+
+              <!-- pH -->
+              <div class="input-group">
+                <label for="ph">
+                  <span class="badge badge-ph">pH</span> pH Level
+                </label>
+                <div class="input-box">
+                  <i class="fas fa-vial"></i>
+                  <input type="number" id="ph" name="ph" placeholder="e.g. 6.5" min="0" max="14" step="0.01" required>
+                  <span class="unit">0–14</span>
+                </div>
+                <span class="hint">Soil acidity / alkalinity (7 = neutral)</span>
+              </div>
+            </div>
+
+            <!-- Rainfall (full width) -->
+            <div class="input-group full-width">
+              <label for="rainfall">
+                <span class="badge badge-r"><i class="fas fa-cloud-rain"></i></span> Rainfall
+              </label>
+              <div class="input-box">
+                <i class="fas fa-cloud-rain"></i>
+                <input type="number" id="rainfall" name="rainfall" placeholder="e.g. 202.9" min="0" max="3000" step="0.1" required>
+                <span class="unit">mm</span>
+              </div>
+              <span class="hint">Annual average rainfall in millimeters</span>
+            </div>
+
+            <button type="submit" class="predict-btn" id="predictBtn">
+              <i class="fas fa-brain"></i>
+              <span>Predict My Crop</span>
+              <div class="btn-loader" id="btnLoader" style="display:none;">
+                <div class="spinner"></div>
+                <span>Analyzing...</span>
+              </div>
+            </button>
+
+          </form>
         </div>
       </div>
-      <p>© 2025 OptiCrop. All rights reserved.</p>
+
+      <!-- RIGHT: RESULT OR GUIDE -->
+      <div class="right-section">
+
+        <!-- RESULT CARD (shown only when prediction exists) -->
+        {% if prediction %}
+        <div class="result-card" id="resultCard">
+          <div class="result-top">
+            <div class="result-icon">
+              <i class="fas fa-seedling"></i>
+            </div>
+            <div class="result-heading">
+              <span class="result-label">AI Recommendation</span>
+              <h2 class="crop-name">{{ prediction }}</h2>
+            </div>
+            <div class="match-badge">95%<br><small>Match</small></div>
+          </div>
+
+          <div class="result-metrics">
+            <div class="metric-item">
+              <i class="fas fa-sun"></i>
+              <div>
+                <strong>Growing Conditions</strong>
+                <span>Optimal</span>
+              </div>
+            </div>
+            <div class="metric-item">
+              <i class="fas fa-chart-line"></i>
+              <div>
+                <strong>Yield Potential</strong>
+                <span>High</span>
+              </div>
+            </div>
+            <div class="metric-item">
+              <i class="fas fa-wrench"></i>
+              <div>
+                <strong>Maintenance</strong>
+                <span>Moderate</span>
+              </div>
+            </div>
+            <div class="metric-item">
+              <i class="fas fa-calendar-alt"></i>
+              <div>
+                <strong>Season</strong>
+                <span>Year-round</span>
+              </div>
+            </div>
+          </div>
+
+          <p class="result-desc">
+            Based on your soil and environmental conditions, <strong>{{ prediction }}</strong> is the optimal crop for your farm. This recommendation is generated by our machine learning model trained on 2,200+ agricultural data records.
+          </p>
+
+          <div class="confidence-bar-section">
+            <div class="conf-row">
+              <span>Model Confidence</span>
+              <strong>95%</strong>
+            </div>
+            <div class="conf-bar-bg">
+              <div class="conf-bar-fill"></div>
+            </div>
+          </div>
+
+          <a href="/FindYourCrop" class="try-again-btn">
+            <i class="fas fa-redo"></i> Try Different Parameters
+          </a>
+        </div>
+        {% endif %}
+
+        <!-- GUIDE CARD (always shown) -->
+        <div class="guide-card">
+          <h3><i class="fas fa-lightbulb"></i> Parameter Reference Guide</h3>
+          <table class="guide-table">
+            <thead>
+              <tr>
+                <th>Parameter</th>
+                <th>Typical Range</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><span class="badge-sm badge-n">N</span> Nitrogen</td><td>0 – 140 mg/kg</td></tr>
+              <tr><td><span class="badge-sm badge-p">P</span> Phosphorus</td><td>5 – 145 mg/kg</td></tr>
+              <tr><td><span class="badge-sm badge-k">K</span> Potassium</td><td>5 – 205 mg/kg</td></tr>
+              <tr><td><i class="fas fa-thermometer-half" style="color:#ef4444;"></i> Temperature</td><td>8°C – 44°C</td></tr>
+              <tr><td><i class="fas fa-tint" style="color:#10b981;"></i> Humidity</td><td>14% – 100%</td></tr>
+              <tr><td><i class="fas fa-vial" style="color:#3b82f6;"></i> pH Level</td><td>3.5 – 9.9</td></tr>
+              <tr><td><i class="fas fa-cloud-rain" style="color:#06b6d4;"></i> Rainfall</td><td>20 – 300 mm</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- QUICK FILL CARD -->
+        <div class="sample-card">
+          <h3><i class="fas fa-flask"></i> Quick Fill — Sample Inputs</h3>
+          <p>Click a preset to auto-fill the form with example values:</p>
+          <div class="sample-btns">
+            <button class="sample-btn" data-n="90" data-p="42" data-k="43" data-temp="20.8" data-hum="82" data-ph="6.5" data-rain="202.9">
+              🌾 Rice
+            </button>
+            <button class="sample-btn" data-n="100" data-p="18" data-k="18" data-temp="24.9" data-hum="66" data-ph="6.7" data-rain="103">
+              🌽 Maize
+            </button>
+            <button class="sample-btn" data-n="80" data-p="35" data-k="180" data-temp="25" data-hum="81" data-ph="5.8" data-rain="246">
+              ☕ Coffee
+            </button>
+            <button class="sample-btn" data-n="20" data-p="67" data-k="20" data-temp="25.5" data-hum="82" data-ph="7.0" data-rain="94">
+              🍌 Banana
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <span><i class="fas fa-seedling"></i> OptiCrop &mdash; Smart Agricultural Optimization Engine</span>
+      <span>&copy; 2025 Ramya Nadipalli. All rights reserved.</span>
     </div>
   </footer>
 
-  <!-- SCROLL TO TOP BUTTON -->
-  <button onclick="topFunction()" id="scrollBtn" title="Go to top">
-    <i class="fas fa-arrow-up"></i>
-  </button>
+  <!-- Scroll to Top -->
+  <button class="scroll-top" id="scrollTop"><i class="fas fa-arrow-up"></i></button>
 
   <script>
-    // Scroll to top functionality
-    const scrollBtn = document.getElementById("scrollBtn");
-    window.onscroll = () => {
-      scrollBtn.style.display = window.scrollY > 200 ? "block" : "none";
-    };
-    function topFunction() {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+    // Navbar scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 40));
+
+    // Hamburger
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('navMenu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      navMenu.classList.toggle('open');
+    });
+
+    // Scroll to top
+    const scrollTop = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => scrollTop.classList.toggle('visible', window.scrollY > 200));
+    scrollTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Sample fill buttons
+    document.querySelectorAll('.sample-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.getElementById('N').value        = btn.dataset.n;
+        document.getElementById('P').value        = btn.dataset.p;
+        document.getElementById('K').value        = btn.dataset.k;
+        document.getElementById('temperature').value = btn.dataset.temp;
+        document.getElementById('humidity').value  = btn.dataset.hum;
+        document.getElementById('ph').value        = btn.dataset.ph;
+        document.getElementById('rainfall').value  = btn.dataset.rain;
+        // visual feedback
+        document.querySelectorAll('.sample-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+
+    // Form submit loading state
+    document.getElementById('cropForm').addEventListener('submit', function() {
+      const btn = document.getElementById('predictBtn');
+      btn.querySelector('i').style.display = 'none';
+      btn.querySelector('span').style.display = 'none';
+      document.getElementById('btnLoader').style.display = 'flex';
+      btn.disabled = true;
+    });
+
+    // Auto scroll to result if present
+    const resultCard = document.getElementById('resultCard');
+    if (resultCard) {
+      setTimeout(() => resultCard.scrollIntoView({ behavior: 'smooth', block: 'center' }), 400);
     }
-
-    // Input field animations
-    document.querySelectorAll('.input-field input').forEach(input => {
-      input.addEventListener('focus', () => {
-        input.parentElement.classList.add('focused');
-      });
-      input.addEventListener('blur', () => {
-        if (!input.value) {
-          input.parentElement.classList.remove('focused');
-        }
-      });
-    });
-
-    // Form submission animation
-    document.querySelector('.prediction-form').addEventListener('submit', function(e) {
-      const button = this.querySelector('.predict-button');
-      button.classList.add('loading');
-      setTimeout(() => {
-        button.classList.remove('loading');
-      }, 2000);
-    });
   </script>
 </body>
 </html>
