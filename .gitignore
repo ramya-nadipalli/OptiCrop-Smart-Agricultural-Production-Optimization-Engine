@@ -1,4 +1,4 @@
-﻿.env
+.env
 .env.local
 __pycache__/
 *.py[cod]
@@ -26,5 +26,5 @@ wheels/
 *.swo
 *~
 .DS_Store
-models/
-*.pkl
+# Allow the trained model file for deployment
+!model/model.pkl
