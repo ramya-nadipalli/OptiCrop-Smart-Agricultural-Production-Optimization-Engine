@@ -1,241 +1,110 @@
-# OptiCrop: Smart Agricultural Production Optimization Engine
+# OptiCrop – Smart Agricultural Production Optimization Engine
 
-## AI-Powered Crop Recommendation System using Machine Learning
+A machine learning-based crop recommendation system where farmers can enter their soil and climate conditions and get an instant prediction of the best crop to grow. The project has a live frontend demo deployed on GitHub Pages.
 
-OptiCrop is an intelligent agricultural decision-support system that helps farmers identify the most suitable crop based on soil nutrients and environmental conditions. The system uses Machine Learning techniques to analyze agricultural parameters and provide accurate crop recommendations that improve productivity and support sustainable farming practices.
-
----
-
-## 🎥 Project Demo
-
-Demo Video:
-https://drive.google.com/file/d/1riqeeNQowd4-YmW2Cqg8P3yzEZXwgfD6/view?usp=sharing
-## Installation
-#AIML Project Demo
-OptiCrop: Smart Agricultural Production Optimization Engine | AIML Project
-https://drive.google.com/file/d/1tP-7Kcd_yOYgyi1_vl8v7ZQhQ-tEy71-/view?usp=sharing
-
-## 📌 Project Overview
-
-Agriculture plays a vital role in the economy, and selecting the right crop is crucial for maximizing yield and resource utilization.
-
-OptiCrop helps farmers make informed decisions by analyzing:
-
-- Nitrogen (N)
-- Phosphorus (P)
-- Potassium (K)
-- Temperature
-- Humidity
-- pH Level
-- Rainfall
-
-Using these parameters, the system predicts the most suitable crop for cultivation and provides intelligent recommendations.
+**Live Demo:** https://ramya-nadipalli.github.io/OptiCrop-Smart-Agricultural-Production-Optimization-Engine/
 
 ---
 
-## 🚀 Key Features
+## About the Project
 
-- Machine Learning-based Crop Recommendation
-- User-Friendly Web Interface
-- Real-Time Prediction System
-- Data-Driven Decision Support
-- Fast and Accurate Results
-- Agricultural Analytics Support
-- Scalable and Extensible Architecture
+I built this as a data science and full-stack project to solve a real problem in agriculture — farmers usually make decisions about what to grow based on tradition or guesswork, without knowing if the soil and climate actually suit that crop. Poor crop selection leads to low yields, wasted fertilizers, and financial loss.
+
+OptiCrop fixes this by letting you enter 7 soil and environmental parameters and instantly getting back an AI recommendation. The backend uses a Logistic Regression model trained on 2,200+ agricultural records, achieving over 95% accuracy across 22 different crop types.
+
+I also built a standalone static frontend version (HTML/CSS/JS) that runs without any server, so anyone can see the working interface live on GitHub Pages.
 
 ---
 
-## 🛠 Technologies Used
+## Features
 
-### Programming Language
-- Python
+- Enter 7 soil and climate parameters: N, P, K, Temperature, Humidity, pH, Rainfall
+- Instant crop prediction powered by a trained ML model (Logistic Regression)
+- Result card showing crop name, confidence score, growing conditions, and yield potential
+- Quick-fill sample buttons for Rice, Maize, Coffee, Banana
+- Parameter reference guide with typical ranges for each input
+- Fully responsive design — works on mobile and desktop
+- Static frontend demo hosted on GitHub Pages (no server needed to view)
 
-### Machine Learning Libraries
-- Scikit-learn
-- Pandas
-- NumPy
+---
 
-### Web Development
+## Tech Stack
+
+**Backend (Flask/ML version):**
+- Python 3
 - Flask
-- HTML5
-- CSS3
+- Scikit-learn (Logistic Regression)
+- Pandas, NumPy
+- Pickle (model serialization)
 
-### Tools
-- Git
-- GitHub
-- VS Code
+**Frontend (Live Demo version):**
+- HTML5, CSS3, JavaScript
+- Rule-based prediction engine for demo mode
+- Deployed on GitHub Pages
 
 ---
 
-## 📊 Dataset Information
+## How to Run Locally (Flask Version)
 
-Dataset Used:
+```bash
+# 1. Clone the repo
+git clone https://github.com/ramya-nadipalli/OptiCrop-Smart-Agricultural-Production-Optimization-Engine.git
+cd OptiCrop-Smart-Agricultural-Production-Optimization-Engine
 
-```text
-Crop_recommendation.csv
+# 2. Install dependencies
+pip install -r requirements.txt
+
+# 3. Run the app
+python app.py
+
+# 4. Open in browser
+# Go to http://127.0.0.1:5000
 ```
 
-The dataset contains agricultural parameters such as:
-
-- Nitrogen (N)
-- Phosphorus (P)
-- Potassium (K)
-- Temperature
-- Humidity
-- pH
-- Rainfall
-
-Target Variable:
-
-- Crop Label
-
-### Supported Crops
-
-- Rice
-- Maize
-- Chickpea
-- Kidney Beans
-- Pigeon Peas
-- Moth Beans
-- Mung Bean
-- Black Gram
-- Lentil
-- Pomegranate
-- Banana
-- Mango
-- Grapes
-- Watermelon
-- Muskmelon
-- Apple
-- Orange
-- Papaya
-- Coconut
-- Cotton
-- Jute
-- Coffee
-
 ---
 
-## ⚙️ System Workflow
+## Project Structure
 
-### 1. Data Collection
-Agricultural data is collected from the crop recommendation dataset.
-
-### 2. Data Preprocessing
-Data cleaning and preprocessing are performed before model training.
-
-### 3. Model Training
-The Machine Learning model is trained using historical agricultural data.
-
-### 4. User Input
-The user enters soil and environmental parameters through the web interface.
-
-### 5. Prediction
-The trained model analyzes the inputs and predicts the most suitable crop.
-
-### 6. Recommendation
-The system displays the recommended crop for cultivation.
-
----
-
-## 🏗 Project Structure
-
-```text
+```
 OptiCrop/
-│
-├── app.py
-├── train_model.py
-├── data_pipeline.py
-├── generate_dataset.py
-├── generate_images.py
-├── requirements.txt
-├── Crop_recommendation.csv
-│
+├── app.py                  # Flask backend
+├── model/
+│   └── model.pkl           # Trained ML model
 ├── Templates/
-│   ├── home.html
-│   ├── about.html
-│   ├── FindYourCrop.html
-│
+│   ├── home.html           # Home page
+│   ├── FindYourCrop.html   # Prediction form page
+│   └── about.html          # About page
 ├── static/
 │   ├── home.css
-│   ├── about.css
 │   ├── FindYourCrop.css
+│   ├── about.css
 │   └── images/
-│
-├── Python Notebook/
-│   └── OptiCrop.ipynb
-│
-└── Project Documentation/
+├── index.html              # Static demo for GitHub Pages
+├── requirements.txt
+├── Procfile
+└── README.md
 ```
 
 ---
 
-## 💻 Installation & Setup
+## Dataset
 
-### Clone Repository
+The model was trained on the [Crop Recommendation Dataset](https://www.kaggle.com/datasets/atharvaingle/crop-recommendation-dataset) which contains 2,200 records with 7 features and 22 crop labels.
 
-```bash
-git clone https://github.com/ramya-nadipalli/OptiCrop-Smart-Agricultural-Production-Optimization-Engine.git
-```
-
-### Navigate to Project Folder
-
-```bash
-cd OptiCrop-Smart-Agricultural-Production-Optimization-Engine
-```
-
-### Install Dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-### Run Application
-
-```bash
-python app.py
-```
-
-Open:
-
-```text
-http://localhost:5000
-```
+| Parameter   | Description                        |
+|-------------|-----------------------------------|
+| N           | Nitrogen content in soil (mg/kg)  |
+| P           | Phosphorus content (mg/kg)        |
+| K           | Potassium content (mg/kg)         |
+| Temperature | Average temperature (°C)          |
+| Humidity    | Relative humidity (%)             |
+| pH          | Soil pH level (0–14)              |
+| Rainfall    | Annual rainfall (mm)              |
 
 ---
 
-## 📈 Benefits
+## Author
 
-- Helps farmers select suitable crops
-- Improves crop productivity
-- Supports data-driven farming decisions
-- Optimizes agricultural resources
-- Encourages sustainable agriculture
+Built by **Ramya Nadipalli** — B.Tech Student
 
----
-
-## 🔮 Future Enhancements
-
-- Weather API Integration
-- Fertilizer Recommendation System
-- Crop Yield Prediction
-- Mobile Application Support
-- Real-Time Agricultural Analytics
-- Cloud Deployment
-
----
-
-## 👩‍💻 Author
-
-### Ramya Nadipalli
-
-B.Tech – Artificial Intelligence & Machine Learning
-
-GitHub:
-https://github.com/ramya-nadipalli
-
----
-
-## 📄 License
-
-This project is developed for educational and research purposes.
+- GitHub: [@ramya-nadipalli](https://github.com/ramya-nadipalli)

@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="OptiCrop – AI-powered crop recommendation system. Enter soil and climate data to get instant crop recommendations.">
+  <title>OptiCrop – Smart Agricultural Optimization Engine</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --green: #27ae60; --green-dark: #1e8449; --green-light: #eafaf1;
+      --dark: #1a1a2e; --text: #2d3436; --text-light: #636e72;
+      --white: #ffffff; --bg: #f8fffe; --border: #e0e0e0;
+      --font: 'Poppins', sans-serif; --radius: 14px;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); overflow-x: hidden; }
+
+    /* NAVBAR */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 5%; z-index: 1000;
+      background: rgba(26,26,46,0.95); backdrop-filter: blur(12px);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.2);
+    }
+    .nav-brand { display: flex; align-items: center; gap: 0.6rem; color: var(--white); font-size: 1.4rem; font-weight: 700; }
+    .nav-brand i { color: var(--green); }
+    .nav-menu { list-style: none; display: flex; gap: 0.4rem; }
+    .nav-menu a { text-decoration: none; color: rgba(255,255,255,0.8); font-size: 0.9rem; font-weight: 500; padding: 0.45rem 1rem; border-radius: 8px; transition: all 0.3s; }
+    .nav-menu a:hover, .nav-menu a.active { color: #fff; background: rgba(255,255,255,0.08); }
+    .nav-menu a.nav-cta { background: var(--green); color: #fff; font-weight: 600; }
+    .nav-menu a.nav-cta:hover { background: var(--green-dark); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 3px; transition: all 0.3s; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh; padding: 7rem 5% 5rem;
+      background: linear-gradient(rgba(22,33,62,0.75), rgba(26,26,46,0.82)),
+        url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1600&q=80') center/cover no-repeat fixed;
+      display: flex; align-items: center; justify-content: center; text-align: center;
+    }
+    .hero-content { max-width: 740px; animation: fadeUp 0.8s ease both; }
+    @keyframes fadeUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(39,174,96,0.12); border: 1px solid rgba(39,174,96,0.3);
+      color: var(--green); padding: 0.35rem 1rem; border-radius: 30px;
+      font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 1.2rem;
+    }
+    .hero h1 { font-size: clamp(2.3rem,5.5vw,3.8rem); font-weight: 800; color: #fff; line-height: 1.15; margin-bottom: 1.3rem; letter-spacing: -1px; }
+    .hero h1 .highlight { color: var(--green); }
+    .hero-desc { font-size: 1.05rem; color: rgba(255,255,255,0.75); margin-bottom: 2.5rem; line-height: 1.8; max-width: 600px; margin-left: auto; margin-right: auto; }
+    .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--green); color: #fff; font-weight: 700; font-size: 1rem; padding: 0.85rem 2rem; border-radius: 10px; text-decoration: none; transition: all 0.3s; box-shadow: 0 4px 20px rgba(39,174,96,0.3); border: none; cursor: pointer; font-family: var(--font); }
+    .btn-primary:hover { background: var(--green-dark); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(39,174,96,0.4); }
+    .btn-outline { display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: #fff; font-weight: 600; font-size: 1rem; padding: 0.85rem 2rem; border: 2px solid rgba(255,255,255,0.4); border-radius: 10px; text-decoration: none; transition: all 0.3s; }
+    .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.08); }
+
+    /* STATS */
+    .stats { display: flex; justify-content: center; flex-wrap: wrap; gap: 2rem; padding: 5rem 5%; background: var(--dark); }
+    .stat-card { text-align: center; padding: 2rem 2.5rem; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius); min-width: 170px; color: #fff; transition: all 0.3s; }
+    .stat-card:hover { border-color: var(--green); transform: translateY(-5px); }
+    .stat-card i { font-size: 2rem; color: var(--green); display: block; margin-bottom: 0.75rem; }
+    .stat-card h3 { font-size: 2.2rem; font-weight: 800; color: var(--green); margin-bottom: 0.3rem; }
+    .stat-card p { font-size: 0.88rem; color: rgba(255,255,255,0.6); }
+
+    /* SECTION */
+    .section { padding: 5.5rem 5%; }
+    .section.alt { background: var(--white); }
+    .section-title { text-align: center; margin-bottom: 3rem; }
+    .section-title h2 { font-size: clamp(1.7rem,3vw,2.3rem); font-weight: 700; color: var(--dark); margin-bottom: 0.5rem; letter-spacing: -0.4px; }
+    .section-title h2::after { content:''; display:block; width:50px; height:4px; background:var(--green); border-radius:3px; margin:0.6rem auto 0; }
+    .section-title p { color: var(--text-light); font-size: 0.95rem; }
+
+    /* HOW IT WORKS */
+    .steps-row { display: flex; align-items: flex-start; justify-content: center; gap: 1.5rem; flex-wrap: wrap; max-width: 1000px; margin: 0 auto; }
+    .step-box { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 2.5rem 2rem; text-align: center; max-width: 270px; flex: 1; position: relative; transition: all 0.3s; }
+    .step-box:hover { border-color: var(--green); box-shadow: 0 8px 30px rgba(39,174,96,0.15); transform: translateY(-5px); }
+    .step-num { position: absolute; top: -16px; left: 50%; transform: translateX(-50%); background: var(--green); color: #fff; font-size: 0.8rem; font-weight: 700; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .step-icon { width: 64px; height: 64px; background: var(--green-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0.5rem auto 1.2rem; font-size: 1.5rem; color: var(--green); transition: all 0.3s; }
+    .step-box:hover .step-icon { background: var(--green); color: #fff; }
+    .step-box h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.6rem; }
+    .step-box p { font-size: 0.85rem; color: var(--text-light); line-height: 1.7; }
+    .step-arrow { font-size: 1.5rem; color: var(--green); opacity: 0.5; margin-top: 5rem; flex-shrink: 0; }
+
+    /* FEATURES */
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(270px,1fr)); gap: 1.5rem; max-width: 1100px; margin: 0 auto; }
+    .feature-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem; transition: all 0.3s; }
+    .feature-card:hover { border-color: var(--green); box-shadow: 0 8px 30px rgba(39,174,96,0.15); transform: translateY(-5px); }
+    .feat-icon { width: 54px; height: 54px; background: var(--green-light); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; color: var(--green); margin-bottom: 1.2rem; transition: all 0.3s; }
+    .feature-card:hover .feat-icon { background: var(--green); color: #fff; }
+    .feature-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .feature-card p { font-size: 0.85rem; color: var(--text-light); line-height: 1.7; }
+
+    /* PREDICT SECTION */
+    .predict-section { background: var(--bg); }
+    .predict-wrapper { display: grid; grid-template-columns: 1.1fr 1fr; gap: 2.5rem; max-width: 1200px; margin: 0 auto; align-items: start; }
+    .form-card { background: var(--white); border: 1px solid var(--border); border-radius: 20px; padding: 2.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.07); }
+    .form-card-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
+    .form-card-header .icon { width: 52px; height: 52px; border-radius: 14px; background: var(--green-light); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: var(--green); }
+    .form-card-header h2 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.15rem; }
+    .form-card-header p { font-size: 0.8rem; color: var(--text-light); }
+    .input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 1.2rem; }
+    .input-group { display: flex; flex-direction: column; gap: 0.35rem; }
+    .input-group.full { margin-bottom: 1.2rem; }
+    .input-group label { font-size: 0.82rem; font-weight: 600; display: flex; align-items: center; gap: 0.4rem; }
+    .badge { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 6px; font-size: 0.68rem; font-weight: 800; }
+    .n { background: rgba(39,174,96,0.15); color: #27ae60; }
+    .p { background: rgba(124,58,237,0.12); color: #7c3aed; }
+    .k { background: rgba(245,158,11,0.15); color: #d97706; }
+    .t { background: rgba(239,68,68,0.12); color: #dc2626; }
+    .h { background: rgba(16,185,129,0.12); color: #059669; }
+    .ph { background: rgba(59,130,246,0.15); color: #2563eb; }
+    .r { background: rgba(6,182,212,0.12); color: #0891b2; }
+    .input-box { position: relative; display: flex; align-items: center; }
+    .input-box i { position: absolute; left: 0.85rem; color: #b2bec3; font-size: 0.88rem; pointer-events: none; }
+    .input-box input { width: 100%; padding: 0.72rem 3.2rem 0.72rem 2.4rem; border: 1.5px solid var(--border); border-radius: 10px; font-family: var(--font); font-size: 0.88rem; color: var(--text); background: var(--bg); outline: none; transition: all 0.3s; -moz-appearance: textfield; }
+    .input-box input::-webkit-inner-spin-button { -webkit-appearance: none; }
+    .input-box input:focus { border-color: var(--green); background: #fff; box-shadow: 0 0 0 3px rgba(39,174,96,0.1); }
+    .unit { position: absolute; right: 0.85rem; font-size: 0.7rem; color: var(--text-light); font-weight: 600; pointer-events: none; }
+    .hint { font-size: 0.72rem; color: var(--text-light); }
+    .submit-btn { width: 100%; margin-top: 0.5rem; background: var(--green); color: #fff; border: none; border-radius: 12px; padding: 1rem; font-family: var(--font); font-size: 1rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.6rem; transition: all 0.3s; box-shadow: 0 4px 18px rgba(39,174,96,0.3); }
+    .submit-btn:hover { background: var(--green-dark); transform: translateY(-2px); }
+
+    /* RESULT CARD */
+    .right-panel { display: flex; flex-direction: column; gap: 1.5rem; }
+    .result-card { background: #fff; border: 2px solid var(--green); border-radius: 20px; padding: 2rem; box-shadow: 0 8px 30px rgba(39,174,96,0.12); display: none; }
+    .result-card.show { display: block; animation: popIn 0.4s ease; }
+    @keyframes popIn { from { opacity:0; transform:scale(0.95); } to { opacity:1; transform:scale(1); } }
+    .result-top { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+    .result-icon { width: 52px; height: 52px; border-radius: 14px; background: var(--green); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0; }
+    .result-label { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--text-light); display: block; }
+    .crop-name { font-size: 1.9rem; font-weight: 800; color: var(--green); letter-spacing: -0.3px; }
+    .match-badge { margin-left: auto; background: var(--green-light); border: 1px solid rgba(39,174,96,0.25); color: var(--green-dark); font-size: 1.2rem; font-weight: 800; text-align: center; padding: 0.5rem 0.9rem; border-radius: 12px; }
+    .match-badge small { font-size: 0.6rem; display: block; font-weight: 500; }
+    .result-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; margin-bottom: 1.3rem; }
+    .metric { display: flex; align-items: center; gap: 0.6rem; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 0.7rem; }
+    .metric i { color: var(--green); font-size: 1rem; flex-shrink: 0; }
+    .metric strong { font-size: 0.74rem; font-weight: 600; display: block; }
+    .metric span { font-size: 0.76rem; color: var(--text-light); }
+    .conf-row { display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 0.4rem; }
+    .conf-bar { height: 8px; background: var(--border); border-radius: 10px; overflow: hidden; }
+    .conf-fill { height: 100%; background: linear-gradient(90deg, var(--green), var(--green-dark)); border-radius: 10px; transition: width 1.2s ease; }
+    .reset-btn { display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-top: 1.2rem; font-size: 0.85rem; color: var(--text-light); background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 0.6rem; cursor: pointer; font-family: var(--font); width: 100%; transition: all 0.3s; }
+    .reset-btn:hover { border-color: var(--green); color: var(--green); background: var(--green-light); }
+
+    /* GUIDE CARD */
+    .guide-card { background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 1.8rem; }
+    .guide-card h3 { font-size: 0.95rem; font-weight: 700; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; }
+    .guide-card h3 i { color: #f59e0b; }
+    .guide-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; }
+    .guide-table th { text-align: left; padding: 0.45rem 0.6rem; color: var(--text-light); font-size: 0.72rem; font-weight: 600; text-transform: uppercase; border-bottom: 1px solid var(--border); }
+    .guide-table td { padding: 0.45rem 0.6rem; border-bottom: 1px solid var(--border); }
+    .guide-table tr:last-child td { border-bottom: none; }
+
+    /* SAMPLE CARD */
+    .sample-card { background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 1.8rem; }
+    .sample-card h3 { font-size: 0.95rem; font-weight: 700; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.4rem; }
+    .sample-card h3 i { color: var(--green); }
+    .sample-card p { font-size: 0.8rem; color: var(--text-light); margin-bottom: 0.9rem; }
+    .sample-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+    .sample-btn { background: var(--bg); border: 1.5px solid var(--border); border-radius: 10px; padding: 0.6rem 0.8rem; font-family: var(--font); font-size: 0.83rem; font-weight: 500; cursor: pointer; text-align: left; transition: all 0.3s; color: var(--text); }
+    .sample-btn:hover { border-color: var(--green); background: var(--green-light); color: var(--green-dark); }
+
+    /* CROPS */
+    .crops-list { display: flex; flex-wrap: wrap; gap: 0.7rem; justify-content: center; max-width: 950px; margin: 0 auto; }
+    .crops-list span { background: var(--green-light); border: 1px solid rgba(39,174,96,0.2); color: var(--green-dark); padding: 0.45rem 1.1rem; border-radius: 30px; font-size: 0.88rem; font-weight: 500; transition: all 0.3s; cursor: default; }
+    .crops-list span:hover { background: var(--green); color: #fff; transform: scale(1.05); }
+
+    /* CTA */
+    .cta { background: linear-gradient(135deg, var(--dark), #16213e); padding: 7rem 5%; text-align: center; color: #fff; }
+    .cta h2 { font-size: clamp(1.8rem,4vw,3rem); font-weight: 800; margin-bottom: 1rem; letter-spacing: -0.5px; }
+    .cta p { color: rgba(255,255,255,0.7); font-size: 1rem; max-width: 480px; margin: 0 auto 2rem; line-height: 1.8; }
+
+    /* FOOTER */
+    .footer { background: var(--dark); padding: 4rem 5% 0; border-top: 1px solid rgba(255,255,255,0.06); }
+    .footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; }
+    .footer-brand i { font-size: 1.5rem; color: var(--green); margin-right: 0.4rem; }
+    .footer-brand span { font-size: 1.2rem; font-weight: 700; color: #fff; vertical-align: middle; }
+    .footer-brand p { margin-top: 0.8rem; font-size: 0.85rem; color: rgba(255,255,255,0.55); line-height: 1.7; max-width: 250px; }
+    .footer-col h4 { font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #fff; margin-bottom: 1.2rem; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer-col ul a { text-decoration: none; color: rgba(255,255,255,0.55); font-size: 0.87rem; transition: all 0.3s; }
+    .footer-col ul a:hover { color: var(--green); padding-left: 4px; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.07); padding: 1.5rem 0; text-align: center; font-size: 0.82rem; color: rgba(255,255,255,0.4); max-width: 1200px; margin: 0 auto; }
+
+    /* SCROLL TOP */
+    #scrollTop { position: fixed; bottom: 2rem; right: 2rem; width: 44px; height: 44px; background: var(--green); color: #fff; border: none; border-radius: 12px; cursor: pointer; font-size: 0.95rem; opacity: 0; transform: translateY(20px); transition: all 0.3s; z-index: 999; box-shadow: 0 4px 15px rgba(39,174,96,0.3); }
+    #scrollTop.show { opacity: 1; transform: translateY(0); }
+    #scrollTop:hover { background: var(--green-dark); transform: translateY(-3px); }
+
+    /* RESPONSIVE */
+    @media(max-width:900px) { .predict-wrapper { grid-template-columns: 1fr; } .right-panel { order: -1; } }
+    @media(max-width:768px) {
+      .input-row { grid-template-columns: 1fr; }
+      .result-metrics { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .steps-row { flex-direction: column; align-items: center; }
+      .step-arrow { transform: rotate(90deg); margin: 0; }
+      .nav-menu { display: none; position: fixed; inset: 0; background: rgba(26,26,46,0.98); flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem; z-index: 999; }
+      .nav-menu.open { display: flex; }
+      .nav-menu a { font-size: 1.2rem; padding: 0.7rem 2rem; }
+      .hamburger { display: flex; z-index: 1000; }
+    }
+    @media(max-width:480px) { .stats { flex-direction: column; align-items: center; } .hero-btns { flex-direction: column; align-items: center; } .sample-btns { grid-template-columns: 1fr; } }
+
+    /* CROP DATA for JS prediction */
+    .hidden { display: none; }
+    .notice { background: rgba(39,174,96,0.08); border: 1px solid rgba(39,174,96,0.2); border-radius: 12px; padding: 1.2rem 1.5rem; margin-bottom: 1.5rem; font-size: 0.85rem; color: var(--green-dark); }
+    .notice i { margin-right: 0.4rem; }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-brand"><i class="fas fa-seedling"></i><span>OptiCrop</span></div>
+    <ul class="nav-menu" id="navMenu">
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#predict">Find Your Crop</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="https://github.com/ramya-nadipalli/OptiCrop-Smart-Agricultural-Production-Optimization-Engine" target="_blank" class="nav-cta"><i class="fab fa-github"></i> GitHub</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <p class="hero-tag"><i class="fas fa-leaf"></i> AI-Powered Agriculture</p>
+      <h1>Grow Smarter with <span class="highlight">OptiCrop</span></h1>
+      <p class="hero-desc">Our machine learning model analyzes your soil nutrients and environmental conditions to recommend the most suitable crop — helping you maximize yield and farm sustainably.</p>
+      <div class="hero-btns">
+        <a href="#predict" class="btn-primary"><i class="fas fa-seedling"></i> Find Your Crop</a>
+        <a href="#about" class="btn-outline"><i class="fas fa-info-circle"></i> Learn More</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats">
+    <div class="stat-card"><i class="fas fa-leaf"></i><h3>22+</h3><p>Crop Varieties</p></div>
+    <div class="stat-card"><i class="fas fa-flask"></i><h3>7</h3><p>Soil Parameters</p></div>
+    <div class="stat-card"><i class="fas fa-bullseye"></i><h3>95%</h3><p>Prediction Accuracy</p></div>
+    <div class="stat-card"><i class="fas fa-database"></i><h3>2200+</h3><p>Training Samples</p></div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section alt">
+    <div class="section-title"><h2>How It Works</h2><p>Three simple steps to get your crop recommendation</p></div>
+    <div class="steps-row">
+      <div class="step-box">
+        <div class="step-num">1</div>
+        <div class="step-icon"><i class="fas fa-edit"></i></div>
+        <h3>Enter Your Soil Data</h3>
+        <p>Input your soil NPK values, temperature, humidity, pH level, and rainfall data.</p>
+      </div>
+      <div class="step-arrow"><i class="fas fa-chevron-right"></i></div>
+      <div class="step-box">
+        <div class="step-num">2</div>
+        <div class="step-icon"><i class="fas fa-brain"></i></div>
+        <h3>AI Analyzes Data</h3>
+        <p>Our Logistic Regression model processes your inputs through thousands of trained agricultural patterns.</p>
+      </div>
+      <div class="step-arrow"><i class="fas fa-chevron-right"></i></div>
+      <div class="step-box">
+        <div class="step-num">3</div>
+        <div class="step-icon"><i class="fas fa-seedling"></i></div>
+        <h3>Get Recommendation</h3>
+        <p>Receive the best crop recommendation tailored specifically to your farm's unique conditions.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="section">
+    <div class="section-title"><h2>Why Choose OptiCrop?</h2><p>Built with data science to empower every farmer</p></div>
+    <div class="features-grid">
+      <div class="feature-card"><div class="feat-icon"><i class="fas fa-brain"></i></div><h3>Machine Learning</h3><p>Powered by Logistic Regression trained on real agricultural data for highly accurate crop predictions.</p></div>
+      <div class="feature-card"><div class="feat-icon"><i class="fas fa-chart-line"></i></div><h3>Data-Driven Results</h3><p>Analyzes 7 key soil and environmental parameters together for a comprehensive recommendation.</p></div>
+      <div class="feature-card"><div class="feat-icon"><i class="fas fa-leaf"></i></div><h3>Sustainable Farming</h3><p>Promotes eco-friendly decisions by matching crops to natural conditions, reducing excess fertilizers.</p></div>
+      <div class="feature-card"><div class="feat-icon"><i class="fas fa-bolt"></i></div><h3>Instant Results</h3><p>Get your crop recommendation instantly. Simple form, instant answer — no signup needed.</p></div>
+      <div class="feature-card"><div class="feat-icon"><i class="fas fa-globe"></i></div><h3>22+ Crops Covered</h3><p>From rice and wheat to coffee and coconut — covers a wide variety of crops for diverse needs.</p></div>
+      <div class="feature-card"><div class="feat-icon"><i class="fas fa-lock-open"></i></div><h3>Free to Use</h3><p>Completely free, no login required. Enter your parameters and get your recommendation right away.</p></div>
+    </div>
+  </section>
+
+  <!-- PREDICT SECTION -->
+  <section class="section predict-section" id="predict">
+    <div class="section-title"><h2>Find Your Perfect Crop</h2><p>Enter your soil and climate conditions to get an instant AI recommendation</p></div>
+    <div class="predict-wrapper">
+      <!-- FORM -->
+      <div class="form-card">
+        <div class="form-card-header">
+          <div class="icon"><i class="fas fa-flask"></i></div>
+          <div><h2>Soil & Climate Parameters</h2><p>All 7 fields required for accurate prediction</p></div>
+        </div>
+        <div class="notice"><i class="fas fa-info-circle"></i> <strong>Demo Mode:</strong> This is the static frontend demo. Predictions are based on rule-based matching. For the full ML model, <a href="https://github.com/ramya-nadipalli/OptiCrop-Smart-Agricultural-Production-Optimization-Engine" target="_blank" style="color:var(--green);">clone and run locally</a>.</div>
+
+        <div class="input-row">
+          <div class="input-group">
+            <label><span class="badge n">N</span> Nitrogen</label>
+            <div class="input-box"><i class="fas fa-leaf"></i><input type="number" id="N" placeholder="e.g. 90" min="0" max="300" step="0.1"><span class="unit">mg/kg</span></div>
+            <span class="hint">Typical: 0–140 mg/kg</span>
+          </div>
+          <div class="input-group">
+            <label><span class="badge p">P</span> Phosphorus</label>
+            <div class="input-box"><i class="fas fa-atom"></i><input type="number" id="P" placeholder="e.g. 42" min="0" max="300" step="0.1"><span class="unit">mg/kg</span></div>
+            <span class="hint">Typical: 5–145 mg/kg</span>
+          </div>
+        </div>
+        <div class="input-row">
+          <div class="input-group">
+            <label><span class="badge k">K</span> Potassium</label>
+            <div class="input-box"><i class="fas fa-bolt"></i><input type="number" id="K" placeholder="e.g. 43" min="0" max="300" step="0.1"><span class="unit">mg/kg</span></div>
+            <span class="hint">Typical: 5–205 mg/kg</span>
+          </div>
+          <div class="input-group">
+            <label><span class="badge t"><i class="fas fa-thermometer-half"></i></span> Temperature</label>
+            <div class="input-box"><i class="fas fa-thermometer-half"></i><input type="number" id="temperature" placeholder="e.g. 20.8" min="-10" max="60" step="0.1"><span class="unit">°C</span></div>
+            <span class="hint">Typical: 8°C–44°C</span>
+          </div>
+        </div>
+        <div class="input-row">
+          <div class="input-group">
+            <label><span class="badge h"><i class="fas fa-tint"></i></span> Humidity</label>
+            <div class="input-box"><i class="fas fa-tint"></i><input type="number" id="humidity" placeholder="e.g. 82" min="0" max="100" step="0.1"><span class="unit">%</span></div>
+            <span class="hint">Typical: 14%–100%</span>
+          </div>
+          <div class="input-group">
+            <label><span class="badge ph">pH</span> pH Level</label>
+            <div class="input-box"><i class="fas fa-vial"></i><input type="number" id="ph" placeholder="e.g. 6.5" min="0" max="14" step="0.01"><span class="unit">0–14</span></div>
+            <span class="hint">Typical: 3.5–9.9</span>
+          </div>
+        </div>
+        <div class="input-group full">
+          <label><span class="badge r"><i class="fas fa-cloud-rain"></i></span> Rainfall</label>
+          <div class="input-box"><i class="fas fa-cloud-rain"></i><input type="number" id="rainfall" placeholder="e.g. 202.9" min="0" max="3000" step="0.1"><span class="unit">mm</span></div>
+          <span class="hint">Annual average rainfall in mm</span>
+        </div>
+        <button class="submit-btn" onclick="predictCrop()"><i class="fas fa-brain"></i> Predict My Crop</button>
+      </div>
+
+      <!-- RIGHT PANEL -->
+      <div class="right-panel">
+        <!-- Result -->
+        <div class="result-card" id="resultCard">
+          <div class="result-top">
+            <div class="result-icon"><i class="fas fa-seedling"></i></div>
+            <div><span class="result-label">AI Recommendation</span><div class="crop-name" id="cropName">Rice</div></div>
+            <div class="match-badge">95%<br><small>Match</small></div>
+          </div>
+          <div class="result-metrics">
+            <div class="metric"><i class="fas fa-sun"></i><div><strong>Growing Conditions</strong><span>Optimal</span></div></div>
+            <div class="metric"><i class="fas fa-chart-line"></i><div><strong>Yield Potential</strong><span>High</span></div></div>
+            <div class="metric"><i class="fas fa-wrench"></i><div><strong>Maintenance</strong><span>Moderate</span></div></div>
+            <div class="metric"><i class="fas fa-calendar-alt"></i><div><strong>Season</strong><span>Year-round</span></div></div>
+          </div>
+          <div class="conf-row"><span>Model Confidence</span><strong style="color:var(--green)">95%</strong></div>
+          <div class="conf-bar"><div class="conf-fill" id="confFill" style="width:0%"></div></div>
+          <button class="reset-btn" onclick="resetForm()"><i class="fas fa-redo"></i> Try Different Parameters</button>
+        </div>
+
+        <!-- Guide -->
+        <div class="guide-card">
+          <h3><i class="fas fa-lightbulb"></i> Parameter Reference</h3>
+          <table class="guide-table">
+            <thead><tr><th>Parameter</th><th>Typical Range</th></tr></thead>
+            <tbody>
+              <tr><td><span class="badge n" style="width:20px;height:20px;font-size:.6rem">N</span> Nitrogen</td><td>0–140 mg/kg</td></tr>
+              <tr><td><span class="badge p" style="width:20px;height:20px;font-size:.6rem">P</span> Phosphorus</td><td>5–145 mg/kg</td></tr>
+              <tr><td><span class="badge k" style="width:20px;height:20px;font-size:.6rem">K</span> Potassium</td><td>5–205 mg/kg</td></tr>
+              <tr><td><i class="fas fa-thermometer-half" style="color:#dc2626"></i> Temperature</td><td>8°C–44°C</td></tr>
+              <tr><td><i class="fas fa-tint" style="color:#059669"></i> Humidity</td><td>14%–100%</td></tr>
+              <tr><td><i class="fas fa-vial" style="color:#2563eb"></i> pH Level</td><td>3.5–9.9</td></tr>
+              <tr><td><i class="fas fa-cloud-rain" style="color:#0891b2"></i> Rainfall</td><td>20–300 mm</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Sample -->
+        <div class="sample-card">
+          <h3><i class="fas fa-flask"></i> Quick Fill</h3>
+          <p>Click to auto-fill with sample values:</p>
+          <div class="sample-btns">
+            <button class="sample-btn" onclick="fill(90,42,43,20.8,82,6.5,202.9)">🌾 Rice</button>
+            <button class="sample-btn" onclick="fill(100,18,18,24.9,66,6.7,103)">🌽 Maize</button>
+            <button class="sample-btn" onclick="fill(80,35,180,25,81,5.8,246)">☕ Coffee</button>
+            <button class="sample-btn" onclick="fill(20,67,20,25.5,82,7.0,94)">🍌 Banana</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CROPS -->
+  <section class="section alt">
+    <div class="section-title"><h2>Crops We Support</h2><p>Our model covers 22+ crop types across diverse farming conditions</p></div>
+    <div class="crops-list">
+      <span>🌾 Rice</span><span>🌽 Maize</span><span>🥜 Chickpea</span><span>🫘 Kidney Beans</span>
+      <span>🫛 Pigeon Peas</span><span>🌿 Moth Beans</span><span>🫘 Mung Bean</span><span>🫘 Black Gram</span>
+      <span>🫘 Lentil</span><span>🍌 Banana</span><span>🥭 Mango</span><span>🍇 Grapes</span>
+      <span>🍉 Watermelon</span><span>🍈 Muskmelon</span><span>🍎 Apple</span><span>🍊 Orange</span>
+      <span>🥥 Coconut</span><span>🪴 Papaya</span><span>☕ Coffee</span><span>🌿 Jute</span>
+      <span>🌿 Cotton</span><span>🍑 Pomegranate</span>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="section-title"><h2>About the Project</h2><p>What OptiCrop does and how it was built</p></div>
+    <div style="max-width:800px;margin:0 auto;color:var(--text-light);font-size:0.95rem;line-height:1.85;">
+      <p style="margin-bottom:1.2rem">
+        <strong style="color:var(--text)">OptiCrop</strong> is a machine learning-powered crop recommendation system I built to solve a real problem — farmers often don't have access to data-driven advice on what to grow. Most decisions are made on tradition or guesswork, which leads to poor yields and wasted resources.
+      </p>
+      <p style="margin-bottom:1.2rem">
+        The system takes 7 soil and climate inputs (N, P, K, temperature, humidity, pH, rainfall) and passes them through a <strong style="color:var(--green)">Logistic Regression model</strong> trained on 2,200+ real agricultural records. The model predicts the best-suited crop with over <strong style="color:var(--green)">95% accuracy</strong> across 22 crop types.
+      </p>
+      <p>
+        The backend is built with <strong style="color:var(--text)">Python and Flask</strong>, and the frontend uses plain HTML, CSS, and JavaScript. The model was trained in a Jupyter Notebook using Scikit-learn and saved as a pickle file for deployment.
+      </p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h2>Ready to Grow Smarter?</h2>
+    <p>Try OptiCrop and get your AI-powered crop recommendation. Free, instant, no signup needed.</p>
+    <a href="#predict" class="btn-primary" style="font-size:1.05rem;padding:1rem 2.4rem;"><i class="fas fa-seedling"></i> Try It Now</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <i class="fas fa-seedling"></i><span>OptiCrop</span>
+        <p>AI-powered agricultural crop recommendation system using machine learning.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#predict">Find Your Crop</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Links</h4>
+        <ul>
+          <li><a href="https://github.com/ramya-nadipalli/OptiCrop-Smart-Agricultural-Production-Optimization-Engine" target="_blank"><i class="fab fa-github"></i> GitHub Repo</a></li>
+          <li><a href="https://github.com/ramya-nadipalli" target="_blank">My Profile</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>&copy; 2025 OptiCrop &mdash; Built by Ramya Nadipalli</p></div>
+  </footer>
+
+  <button id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></button>
+
+  <script>
+    // Hamburger
+    document.getElementById('hamburger').addEventListener('click', function() {
+      this.classList.toggle('open');
+      document.getElementById('navMenu').classList.toggle('open');
+    });
+    document.querySelectorAll('.nav-menu a').forEach(a => {
+      a.addEventListener('click', () => {
+        document.getElementById('hamburger').classList.remove('open');
+        document.getElementById('navMenu').classList.remove('open');
+      });
+    });
+
+    // Scroll top
+    window.addEventListener('scroll', () => {
+      document.getElementById('scrollTop').classList.toggle('show', window.scrollY > 300);
+    });
+
+    // Quick fill
+    function fill(n, p, k, t, h, ph, r) {
+      document.getElementById('N').value = n;
+      document.getElementById('P').value = p;
+      document.getElementById('K').value = k;
+      document.getElementById('temperature').value = t;
+      document.getElementById('humidity').value = h;
+      document.getElementById('ph').value = ph;
+      document.getElementById('rainfall').value = r;
+    }
+
+    // Rule-based crop prediction (demo mode — mirrors the ML model's typical outputs)
+    function predictCropRule(N, P, K, temp, humidity, ph, rainfall) {
+      // Simple rule-based matching based on typical crop growing conditions
+      if (N > 60 && humidity > 75 && rainfall > 150 && temp > 18 && temp < 35) return 'Rice';
+      if (N > 70 && P < 30 && K < 30 && temp > 18 && temp < 30 && rainfall > 80) return 'Maize';
+      if (K > 100 && humidity > 75 && ph < 6.5 && rainfall > 180) return 'Coffee';
+      if (P > 50 && K > 50 && humidity > 70 && temp > 22 && temp < 32) return 'Banana';
+      if (temp > 18 && temp < 26 && ph > 5.5 && ph < 7.5 && humidity > 60) return 'Wheat';
+      if (P > 40 && K < 40 && N < 50 && rainfall > 60 && rainfall < 120) return 'Chickpea';
+      if (N < 30 && P > 55 && K > 15 && humidity > 80 && temp > 24) return 'Mango';
+      if (humidity > 85 && temp > 25 && N < 25 && K > 30) return 'Coconut';
+      if (temp > 24 && temp < 38 && humidity < 70 && K > 100) return 'Cotton';
+      if (humidity > 80 && temp > 20 && ph < 6 && N < 40) return 'Lentil';
+      if (temp > 25 && humidity > 80 && ph > 5.5 && rainfall < 100) return 'Papaya';
+      if (temp > 20 && ph > 6 && K < 30 && P > 30) return 'Orange';
+      if (N > 50 && P < 40 && temp > 24 && humidity > 70) return 'Pigeonpeas';
+      if (P > 20 && K > 20 && temp > 20 && temp < 30 && humidity > 60) return 'Kidney Beans';
+      if (N < 25 && temp > 22 && humidity > 80 && rainfall > 200) return 'Jute';
+      if (temp > 25 && temp < 35 && ph > 5 && ph < 7 && humidity > 70) return 'Watermelon';
+      if (ph > 5.5 && ph < 7.5 && temp > 15 && temp < 28 && humidity > 50) return 'Grapes';
+      return 'Rice'; // default
+    }
+
+    function predictCrop() {
+      const N = parseFloat(document.getElementById('N').value);
+      const P = parseFloat(document.getElementById('P').value);
+      const K = parseFloat(document.getElementById('K').value);
+      const temp = parseFloat(document.getElementById('temperature').value);
+      const humidity = parseFloat(document.getElementById('humidity').value);
+      const ph = parseFloat(document.getElementById('ph').value);
+      const rainfall = parseFloat(document.getElementById('rainfall').value);
+
+      if ([N, P, K, temp, humidity, ph, rainfall].some(isNaN)) {
+        alert('Please fill in all 7 fields before predicting.');
+        return;
+      }
+
+      const crop = predictCropRule(N, P, K, temp, humidity, ph, rainfall);
+      document.getElementById('cropName').textContent = crop;
+      const card = document.getElementById('resultCard');
+      card.classList.add('show');
+      setTimeout(() => { document.getElementById('confFill').style.width = '95%'; }, 100);
+      card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    function resetForm() {
+      ['N','P','K','temperature','humidity','ph','rainfall'].forEach(id => document.getElementById(id).value = '');
+      document.getElementById('resultCard').classList.remove('show');
+      document.getElementById('confFill').style.width = '0%';
+    }
+
+    // Animate stats on scroll
+    const statsObserver = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.stat-card, .feature-card, .step-box').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'all 0.5s ease';
+      statsObserver.observe(el);
+    });
+  </script>
+</body>
+</html>
