@@ -6,6 +6,19 @@ A machine learning-based crop recommendation system where farmers can enter thei
 
 ---
 
+## Screenshots
+
+**Home Page**
+![Home Page](screenshots/home.jpg)
+
+**Crop Prediction Form**
+![Crop Prediction](screenshots/predict.jpg)
+
+**About Page**
+![About Page](screenshots/about.jpg)
+
+---
+
 ## About the Project
 
 I built this as a data science and full-stack project to solve a real problem in agriculture — farmers usually make decisions about what to grow based on tradition or guesswork, without knowing if the soil and climate actually suit that crop. Poor crop selection leads to low yields, wasted fertilizers, and financial loss.
