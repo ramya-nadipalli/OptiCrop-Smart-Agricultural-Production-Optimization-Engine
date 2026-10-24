@@ -14,9 +14,6 @@ A machine learning-based crop recommendation system where farmers can enter thei
 **Crop Prediction Form**
 ![Crop Prediction](screenshots/predict.jpg)
 
-**About Page**
-![About Page](screenshots/about.jpg)
-
 ---
 
 ## About the Project
